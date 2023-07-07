@@ -43,7 +43,7 @@ public static class UtilityFunctions
         return (lastPeriod < 0 ? path : path[..lastPeriod]).ToString();
     }
 
-    public static List<T> FindAssetsByType<T>() where T : UnityEngine.Object
+    /*public static List<T> FindAssetsByType<T>() where T : UnityEngine.Object
     {
         List<T> assets = new List<T>();
         string[] guids = AssetDatabase.FindAssets(string.Format("t:{0}", typeof(T)));
@@ -57,7 +57,7 @@ public static class UtilityFunctions
             }
         }
         return assets;
-    }
+    }*/
 
     public static int GenerateRandomIntSeed(string seed)
     {
