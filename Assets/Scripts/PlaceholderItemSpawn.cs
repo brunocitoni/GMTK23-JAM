@@ -25,6 +25,7 @@ public class PlaceholderItemSpawn : MonoBehaviour
         var newItem = Instantiate(itemPrefab, this.transform);
         newItem.transform.position = pos1;
         newItem.GetComponent<Item>().thisItem = scriptableObject; // assign a random enemy to this specific enemy
+        Debug.Log("Done");
     }
 }
 
