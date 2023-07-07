@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 912455268979781031}
   - component: {fileID: 9043127765555704170}
   - component: {fileID: 1134819256454697384}
+  - component: {fileID: 9191741021118605247}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -58,6 +59,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1757769762198179559}
   movementScript: {fileID: 5335924984568007565}
   inventory: {fileID: 1801970167136845950}
+  pickup: {fileID: 9191741021118605247}
 --- !u!114 &1757769762198179559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +159,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9191741021118605247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903301555714573407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1867f0cdc2db31b4fa1c008f7735b7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

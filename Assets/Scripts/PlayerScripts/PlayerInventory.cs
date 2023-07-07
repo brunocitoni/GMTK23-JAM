@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddItemToInventory(ItemSO itemToAdd)
     {
         itemsHeld.Add(itemToAdd);
+        Debug.Log("AddItemToInventoryDone");
     }
 
     public void ThrowItem(ItemSO itemToThrow)
