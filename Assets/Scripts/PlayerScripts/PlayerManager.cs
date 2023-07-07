@@ -8,4 +8,5 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Health playerHealth;
     [SerializeField] SideckickMove movementScript;
     [SerializeField] PlayerInventory inventory;
+    [SerializeField] PlayerPickup pickup;
 }
