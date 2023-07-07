@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 163980579}
   - component: {fileID: 163980578}
   - component: {fileID: 163980577}
+  - component: {fileID: 163980580}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -242,6 +243,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163980580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163980576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60f3c6c5f7a4448bafb28af07a90bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &313820474
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +267,7 @@ GameObject:
   - component: {fileID: 313820476}
   - component: {fileID: 313820475}
   - component: {fileID: 313820477}
+  - component: {fileID: 313820478}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -361,6 +376,19 @@ MonoBehaviour:
   StartAvoiding:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &313820478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313820474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60f3c6c5f7a4448bafb28af07a90bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &482694276
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +400,7 @@ GameObject:
   - component: {fileID: 482694279}
   - component: {fileID: 482694278}
   - component: {fileID: 482694277}
+  - component: {fileID: 482694280}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -480,6 +509,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482694280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482694276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60f3c6c5f7a4448bafb28af07a90bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1719702858
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +617,7 @@ GameObject:
   - component: {fileID: 1865288411}
   - component: {fileID: 1865288410}
   - component: {fileID: 1865288412}
+  - component: {fileID: 1865288413}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -683,3 +726,16 @@ MonoBehaviour:
   StartAvoiding:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1865288413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865288409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60f3c6c5f7a4448bafb28af07a90bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

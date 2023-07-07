@@ -38,7 +38,8 @@ public class AIBase : MonoBehaviour
 
         StartAttack.AddListener(() => attackTimer = attackCooldown);
 
-        GetComponent<Health>().OnThisDeath += TargetDied;
+        if(GetComponent<Health>() != null)
+            GetComponent<Health>().OnThisDeath += TargetDied;
     }
 
     void Update()
@@ -125,7 +126,6 @@ public class AIBase : MonoBehaviour
     {
         attacking = true;
         AIBase targetAI = target.GetComponent<AIBase>();
-        targetAI.attackers.Add(gameObject);
 
         Vector2 startposition = transform.position;
 
@@ -139,6 +139,8 @@ public class AIBase : MonoBehaviour
         //Attack
         if (Vector2.Distance(transform.position, target.transform.position) < heldWeapon.weaponLength)
         {
+            targetAI.attackers.Add(gameObject);
+
             Health h = target.GetComponent<Health>();
             if(h != null)
             {

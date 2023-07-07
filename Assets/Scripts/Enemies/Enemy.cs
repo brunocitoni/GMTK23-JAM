@@ -20,6 +20,14 @@ public class Enemy : MonoBehaviour
         healthScript = this.gameObject.AddComponent<Health>();
         healthScript.SetHealth(thisEnemy.enemyMaxHealth);
         healthScript.OnThisDeath += Die;
+
+        ai = this.gameObject.AddComponent<EnemyAI>();
+        ai.weaponRangeTolerance = thisEnemy.weaponRangeTolerance;
+        ai.movespeed = thisEnemy.moveSpeed;
+        ai.attackduration = thisEnemy.attackduration;
+        ai.attackCooldown = thisEnemy.attackCooldown;
+        ai.attackStopDistance = thisEnemy.attackStopDistance;
+        ai.personalSpace = thisEnemy.personalSpace;
     }
 
     private void Die()
