@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 313820477}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Player
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,6 +225,10 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
+  movespeed: 5
+  attackduration: 0.2
+  attackCooldown: 1
+  attackStopDistance: 0.3
   StartSearch:
     m_PersistentCalls:
       m_Calls: []
@@ -237,7 +241,6 @@ MonoBehaviour:
   StartAvoiding:
     m_PersistentCalls:
       m_Calls: []
-  speed: 3
 --- !u!1 &1719702858
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +427,10 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.75
+  movespeed: 5
+  attackduration: 0
+  attackCooldown: 1
+  attackStopDistance: 0
   StartSearch:
     m_PersistentCalls:
       m_Calls: []
