@@ -3,7 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     int currentHealth;
-    public int maxHealth;
+    public int maxHealth = 100; // default to 100, should be overritten;
 
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
