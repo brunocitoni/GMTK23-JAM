@@ -234,6 +234,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &500777559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500777561}
+  - component: {fileID: 500777560}
+  m_Layer: 0
+  m_Name: Placeholderspawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &500777560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500777559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd3f506cda6f9f44be41d0effeabbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 11400000, guid: 5aad45fcfcab34b2587ab69a56da7fa1, type: 2}
+  itemPrefab: {fileID: 5728163926067688090, guid: f3e034d99e07b429e98ca51308a1e917, type: 3}
+--- !u!4 &500777561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500777559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.112283, y: -2.0157313, z: -0.10083224}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602571892
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9a65c40d0eb247a976b47d4183b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  walkspeed: 8
+  runspeed: 15
 --- !u!212 &1376393426
 SpriteRenderer:
   m_ObjectHideFlags: 0
