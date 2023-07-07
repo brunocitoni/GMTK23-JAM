@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<ItemSO> itemsHeld = new();
+
+    public void AddItemToInventory(ItemSO itemToAdd)
     {
-        
+        itemsHeld.Add(itemToAdd);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ThrowItem(ItemSO itemToThrow)
     {
-        
+        itemsHeld.Remove(itemToThrow);
+        // todo hero needs to receive it
     }
 }

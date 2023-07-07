@@ -7,7 +7,7 @@ public class EnemySO : ScriptableObject
     public string enemyName;
     public Sprite enemySprite;
     public int enemyAtk;
-    public int enemyHealth;
+    public int enemyMaxHealth;
     public float moveSpeed;
     public List<ItemSO> drops;
 }
