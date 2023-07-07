@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de6be83915b9b45e3a755222792ff699, type: 3}
-  m_Name: Goblin
+  m_Name: Orc
   m_EditorClassIdentifier: 
-  enemyName: Goblin
-  enemySprite: {fileID: 21300000, guid: 3b4e88f5705085042a95960cdcef2561, type: 3}
+  enemyName: Orc
+  enemySprite: {fileID: 21300000, guid: 66fa19194577350438c952106f661c2f, type: 3}
   enemyAtk: 0
   enemyHealth: 0
-  moveSpeed: 3
+  moveSpeed: 2
   drops:
   - {fileID: 11400000, guid: 5aad45fcfcab34b2587ab69a56da7fa1, type: 2}
