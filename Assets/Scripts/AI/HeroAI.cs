@@ -6,7 +6,7 @@ public class HeroAI : AIBase
 {
     public override void Searching()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy")
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         base.Searching();
     }
