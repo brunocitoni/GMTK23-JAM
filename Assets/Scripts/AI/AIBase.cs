@@ -8,13 +8,14 @@ public class AIBase : MonoBehaviour
     public AIStates currentState = AIStates.searching;
 
     public GameObject target;
+    public Vector2 targetPosition;
 
     public Weapon heldWeapon;
 
     [Header("Persueing"), Tooltip("This multiplied with the weaponrange is where the person actually stops")]
     public float weaponRangeTolerance = 0.75f;
 
-    [Header("Other")]
+    [HideInInspector]
     public UnityEvent StartSearch, StartPersue, StartAttack, StartAvoiding;
 
     void Start()
@@ -65,11 +66,12 @@ public class AIBase : MonoBehaviour
     /// </summary>
     public virtual void Persueing()
     {
+        targetPosition = target.transform.position;
+
         if(Vector2.Distance(transform.position, target.transform.position) < heldWeapon.range * weaponRangeTolerance)
         {
             currentState = AIStates.attacking;
             StartAttack.Invoke();
-
             return;
         }
     }
@@ -79,7 +81,12 @@ public class AIBase : MonoBehaviour
     /// </summary>
     public virtual void Attacking()
     {
-
+        if (Vector2.Distance(transform.position, target.transform.position) > heldWeapon.range)
+        {
+            currentState = AIStates.persueing;
+            StartPersue.Invoke();
+            return;
+        }
     }
 
     public virtual void AvoidingDamage()
