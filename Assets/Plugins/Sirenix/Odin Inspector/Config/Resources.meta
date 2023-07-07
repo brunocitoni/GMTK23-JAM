@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 8fb16343c8446ca4cb9ad084730aa0bd
 folderAsset: yes
+=======
+<<<<<<<< Updated upstream:Assets/Plugins/Sirenix/Demos/Custom Drawers.unitypackage.meta
+guid: 48e08dc33330d11e9d4a1b246c52e4f6
+========
+guid: f25d3a4715a51b4428cf70965a7437dd
+folderAsset: yes
+>>>>>>>> Stashed changes:Assets/Plugins/Sirenix/Odin Inspector/Config/Resources.meta
+>>>>>>> Stashed changes
 DefaultImporter:
   externalObjects: {}
   userData: 
