@@ -17,6 +17,12 @@ public class AIBase : MonoBehaviour
     public float movespeed = 5;
 
     [Header("Atacking")]
+    public float attackduration;
+    [Tooltip("The time it takes for this person to be ready to attack again in seconds")]
+    public float attackCooldown = 1;
+    float attackTimer; //Time left till attack is ready
+    [Tooltip("The distance from the enemy at which the person stops and attacks")]
+    public float attackStopDistance = 0.5f;
     bool attacking = false;
 
 
@@ -26,6 +32,8 @@ public class AIBase : MonoBehaviour
     void Start()
     {
         currentState = AIStates.searching;
+
+        StartAttack.AddListener(() => attackTimer = attackCooldown);
     }
 
     void Update()
@@ -88,6 +96,7 @@ public class AIBase : MonoBehaviour
     {
         if (!attacking)
         {
+            //Cancel Attacking State if target moves to far away
             if (Vector2.Distance(transform.position, target.transform.position) > heldWeapon.range)
             {
                 currentState = AIStates.persueing;
@@ -95,7 +104,12 @@ public class AIBase : MonoBehaviour
                 return;
             }
 
-
+            //Start Attack
+            if(attackTimer <= 0 && !target.GetComponent<AIBase>().attacking)
+            {
+                StartCoroutine(Attack());
+            }
+            attackTimer -= Time.deltaTime;
             return;
         }
 
@@ -106,11 +120,44 @@ public class AIBase : MonoBehaviour
     {
         attacking = true;
 
-        while (attacking)
+        Vector2 startposition = transform.position;
+
+        //Move towards enemy
+        while (Vector2.Distance(transform.position, target.transform.position) > attackStopDistance && Vector2.Distance(transform.position, startposition) < heldWeapon.range)
         {
-            yield return 0;
-            attacking = false;
+            transform.position = Vector2.Lerp(transform.position, target.transform.position, heldWeapon.attackMoveSpeed * Time.deltaTime);
+            yield return null;
         }
+
+        //Attack
+        if (Vector2.Distance(transform.position, target.transform.position) < heldWeapon.weaponLength)
+        {
+            Health h = target.GetComponent<Health>();
+            if(h != null)
+            {
+                h.ModifyHealth(-heldWeapon.damage);
+            }
+            else
+            {
+                Debug.LogError("Warning... " + target.name + " doesn't have a health script!", target);
+            }
+        }
+        else
+        {
+            //Missed attack (maybe some sort of effect)
+        }
+
+        yield return new WaitForSeconds(attackduration);
+
+        //Move away again
+        while (Vector2.Distance(transform.position, startposition) > .05f)
+        {
+            transform.position = Vector2.Lerp(transform.position, startposition, heldWeapon.attackMoveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        attacking = false;
+        attackTimer = attackCooldown;
     }
 
     public virtual void AvoidingDamage()

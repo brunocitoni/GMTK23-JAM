@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
         var newEnemy = Instantiate(enemyPrefab, this.transform);
         newEnemy.transform.position = this.transform.position;
         newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)]; // assign a random enemy to this specific enemy
+
+
         spawnerTimer.RestartTimer(); // at the moment only fixed time spawns, can make it more random if needs be todo
     }
 }
