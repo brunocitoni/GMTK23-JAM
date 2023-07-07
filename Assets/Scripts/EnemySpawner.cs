@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int timeBetweenSpawns = 10;
+    [SerializeField] Timer spawnerTimer;
+
+    private void Start()
     {
+        spawnerTimer.TimerElapsed += SpawnEnemy;
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        spawnerTimer.TimerElapsed -= SpawnEnemy;
+    }
+
+    private void SpawnEnemy() {
+        // todo function to instantiate a game object and assign it a random(?) EnemySO
     }
 }
