@@ -36,9 +36,9 @@ public class Enemy : MonoBehaviour
     }
 
     //debug only
-    private void Update()
+    /*private void Update()
     {
         transform.Translate(Vector3.left * thisEnemy.moveSpeed*100 * Time.deltaTime);
-    }
+    }*/
 
 }
