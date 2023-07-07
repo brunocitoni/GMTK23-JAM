@@ -23,7 +23,10 @@ public class AIBase : MonoBehaviour
     float attackTimer; //Time left till attack is ready
     [Tooltip("The distance from the enemy at which the person stops and attacks")]
     public float attackStopDistance = 0.5f;
+    [Tooltip("The distance the person moves back when the attack started too close")]
+    public float personalSpace = 1;
     bool attacking = false;
+    List<GameObject> attackers = new List<GameObject>();
 
 
     [HideInInspector]
@@ -34,6 +37,8 @@ public class AIBase : MonoBehaviour
         currentState = AIStates.searching;
 
         StartAttack.AddListener(() => attackTimer = attackCooldown);
+
+        GetComponent<Health>().OnThisDeath += TargetDied;
     }
 
     void Update()
@@ -105,7 +110,7 @@ public class AIBase : MonoBehaviour
             }
 
             //Start Attack
-            if(attackTimer <= 0 && !target.GetComponent<AIBase>().attacking)
+            if(attackTimer <= 0 && attackers.Count == 0)
             {
                 StartCoroutine(Attack());
             }
@@ -119,6 +124,8 @@ public class AIBase : MonoBehaviour
     IEnumerator Attack()
     {
         attacking = true;
+        AIBase targetAI = target.GetComponent<AIBase>();
+        targetAI.attackers.Add(gameObject);
 
         Vector2 startposition = transform.position;
 
@@ -150,14 +157,38 @@ public class AIBase : MonoBehaviour
         yield return new WaitForSeconds(attackduration);
 
         //Move away again
+        if(Vector2.Distance(startposition, target.transform.position) < personalSpace)
+        {
+            startposition = (Vector2)transform.position + (startposition - (Vector2)transform.position).normalized * personalSpace;
+        }
+
         while (Vector2.Distance(transform.position, startposition) > .05f)
         {
             transform.position = Vector2.Lerp(transform.position, startposition, heldWeapon.attackMoveSpeed * Time.deltaTime);
             yield return null;
         }
 
+        //End attack
         attacking = false;
         attackTimer = attackCooldown;
+
+        targetAI.attackers.Remove(gameObject);
+    }
+
+    void TargetDied()
+    {
+        if (attacking)
+        {
+            target.GetComponent<AIBase>().attackers.Remove(gameObject);
+        }
+
+        target = null;
+        currentState = AIStates.searching;
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<Health>().OnThisDeath -= TargetDied;
     }
 
     public virtual void AvoidingDamage()
