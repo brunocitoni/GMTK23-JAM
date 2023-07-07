@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HeroAI : AIBase
 {
-    [Header("Hero Specific")]
-    public float speed = 5;
+  //  [Header("Hero Specific")]
 
 
     public override void Searching()
@@ -37,15 +36,17 @@ public class HeroAI : AIBase
 
     public override void Persueing()
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * movespeed);
 
         base.Persueing();
     }
 
     public override void Attacking()
     {
+        //Checks if enemy is still within range and attacks when the conditions are good
         base.Attacking();
     }
+
 
     public override void AvoidingDamage()
     {
