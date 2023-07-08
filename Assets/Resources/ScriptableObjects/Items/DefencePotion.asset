@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b647667062d784c48a2a3ad880f6366a, type: 3}
-  m_Name: Leather
+  m_Name: DefencePotion
   m_EditorClassIdentifier: 
-  itemName: Leather
-  itemSprite: {fileID: 21300000, guid: ea833d779996e3244b3b567764be9cf0, type: 3}
-  givable: 0
+  itemName: DefencePotion
+  itemSprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  givable: 1

@@ -37,7 +37,6 @@ public class Inventory_UI : MonoBehaviour
         }
     }
 
-
     public void Setup()
     {   
         List<ItemSO> inventory = pInventory.itemsHeld;

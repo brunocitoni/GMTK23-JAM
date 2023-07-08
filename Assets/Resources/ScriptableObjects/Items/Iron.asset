@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Iron
   itemSprite: {fileID: 21300000, guid: 3120ec2beffde56499fe86f755fc25b9, type: 3}
-  itemType: 1
+  givable: 0

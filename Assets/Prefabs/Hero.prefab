@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5330170579135576170}
   - component: {fileID: 1068319421414522119}
   - component: {fileID: 1068319421414522232}
+  - component: {fileID: 1547117389}
+  - component: {fileID: 9096347352575896022}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -140,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 1000
+  defencePotion: 0
+  attackPotion: 0
   healthbar: {fileID: 5330170579135576170}
   hasDied: 0
 --- !u!114 &5330170579135576170
@@ -195,6 +199,35 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1547117389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068319421414522114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5354646463fc94b49bce887c63fbef14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroHealth: {fileID: 1068319421414522118}
+  heroAI: {fileID: 1068319421414522117}
+  activeEffectTimer: {fileID: 9096347352575896022}
+--- !u!114 &9096347352575896022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068319421414522114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c1ddab0e0ad45cf8e71cc3aee86e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  display: 0
 --- !u!1 &2236136350753164309
 GameObject:
   m_ObjectHideFlags: 0

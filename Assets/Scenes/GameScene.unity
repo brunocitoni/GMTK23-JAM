@@ -149,6 +149,22 @@ PrefabInstance:
       propertyPath: inv_UI
       value: 
       objectReference: {fileID: 1712716672}
+    - target: {fileID: 1801970167136845950, guid: 87940fafc5c9942d3bdaf16397238189, type: 3}
+      propertyPath: itemsHeld.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801970167136845950, guid: 87940fafc5c9942d3bdaf16397238189, type: 3}
+      propertyPath: itemsHeld.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab41e013baacd48f3b54afe216355874, type: 2}
+    - target: {fileID: 1801970167136845950, guid: 87940fafc5c9942d3bdaf16397238189, type: 3}
+      propertyPath: itemsHeld.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 276bc863c558748a098056f3ea8b1665, type: 2}
+    - target: {fileID: 1801970167136845950, guid: 87940fafc5c9942d3bdaf16397238189, type: 3}
+      propertyPath: itemsHeld.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a6c675a6806264b6494d280bac5b63a7, type: 2}
     - target: {fileID: 4879981975654690397, guid: 87940fafc5c9942d3bdaf16397238189, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -541,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0faed18e690c4deab5ee8fa60aae578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 50
   enemyPrefab: {fileID: 5728163926067688090, guid: f3e034d99e07b429e98ca51308a1e917, type: 3}
   spawnerTimer: {fileID: 1515803656}
   spawnableEnemies:
