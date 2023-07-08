@@ -22,14 +22,13 @@ public class EnemySpawner : MonoBehaviour
         spawnerTimer.TimerElapsed -= SpawnEnemy;
     }
 
-    private void SpawnEnemy() {
-        // todo function to instantiate a game object and assign it a random(?) EnemySO
+    private void SpawnEnemy()
+    {
         Debug.Log("Spawning an enemy at " + this.transform.position);
 
         var newEnemy = Instantiate(enemyPrefab, this.transform);
         newEnemy.transform.position = this.transform.position;
         newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)]; // assign a random enemy to this specific enemy
-
 
         spawnerTimer.RestartTimer(); // at the moment only fixed time spawns, can make it more random if needs be todo
     }
