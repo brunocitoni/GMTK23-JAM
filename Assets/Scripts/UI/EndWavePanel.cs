@@ -14,6 +14,8 @@ public class EndWavePanel : MonoBehaviour
     private void DisplayPanel() {
 
         this.gameObject.SetActive(true);
+        // take away player control
+
     }
 
     public void OnClickRest() {

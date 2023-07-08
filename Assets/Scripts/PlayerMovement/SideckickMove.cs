@@ -22,6 +22,10 @@ public class SideckickMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (WaveManager.waitingForNewWave) {
+            return;
+        }
+
         float directionX = Input.GetAxisRaw("Horizontal");
         float directionY = Input.GetAxisRaw("Vertical");
         playerDirection = new Vector2(directionX,directionY).normalized;

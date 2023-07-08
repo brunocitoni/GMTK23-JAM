@@ -9,6 +9,7 @@ public class WaveManager : SerializedMonoBehaviour
     public static Timer waveTimer;
     EnemySpawner enemySpawner;
     public static bool isWaveOngoing = false;
+    public static bool waitingForNewWave = true;
 
     // events
     public delegate void WaveComplete();
@@ -41,6 +42,7 @@ public class WaveManager : SerializedMonoBehaviour
         waveTimer.RestartTimer();
         Debug.Log("Wave has started");
         isWaveOngoing = true;
+        waitingForNewWave = false;
     }
 
     private void EndWave()
@@ -60,6 +62,7 @@ public class WaveManager : SerializedMonoBehaviour
     // this needs to be called by the enemy that dies AFTER the spawner has ceased spawning
     public static void InvokeWaveComplete() {
         Debug.Log("Wave complete! Invoking the OnWaveComplete event");
+        waitingForNewWave = true;
         OnWaveComplete?.Invoke();
     }
 
