@@ -21,22 +21,19 @@ public class EndWavePanel : MonoBehaviour
     public void OnClickRest() {
         // todo add functionality
         Debug.Log("Resting...");
+
+        //give back some health to player and hero
+        GameObject.FindGameObjectWithTag("Hero").GetComponent<Health>().ModifyHealth(Data.healOnRestHero);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().ModifyHealth(Data.healOnRestPlayer);
+
         // invoke new wave start
         InvokeNewWaveStart();
 
     }
 
     public void OnClickCraft() {
-
         //todo
         Debug.Log("Crafting...");
-        // invoke new wave start
-        InvokeNewWaveStart();
-    }
-
-    public void OnClickUpgrade() {
-        //todo
-        Debug.Log("Upgrading...");
         // invoke new wave start
         InvokeNewWaveStart();
     }

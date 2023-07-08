@@ -53,11 +53,6 @@ public class WaveManager : SerializedMonoBehaviour
         waitingForNewWave = false;
     }
 
-    private void OnGameOver() {
-        waveTimer.StopTimer();
-        enemySpawner.StopSpawning();
-    }
-
     private void EndWave()
     {
         Debug.Log("Wave time has ended");
@@ -65,11 +60,6 @@ public class WaveManager : SerializedMonoBehaviour
         // stop enemy spawning
         enemySpawner.StopSpawning();
         isWaveOngoing = false;
-
-        //check if the hero is alive
-        if (heroHealth.hasDied) {
-            gameManager.TriggerGameOver();
-        }
 
         // check if there are currently no enemies alive
         if(enemySpawner.currentNumberOfEnemiesSpawned <= 0) {
