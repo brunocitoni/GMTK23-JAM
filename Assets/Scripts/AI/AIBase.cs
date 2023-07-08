@@ -30,6 +30,10 @@ public class AIBase : MonoBehaviour
     public float personalSpace = 1;
     bool attacking = false;
 
+    [Header("Graphics")]
+    public Transform weaponeffect;
+    private Animator anim;
+
 
     [HideInInspector]
     public UnityEvent StartSearch, StartPersue, StartAttack, StartAvoiding;
@@ -44,6 +48,8 @@ public class AIBase : MonoBehaviour
             GetComponent<Health>().OnThisDeath += OnDeath;
 
         rb = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
     }
 
     void SetUpAttack()
@@ -187,6 +193,7 @@ public class AIBase : MonoBehaviour
 
     }
 
+    bool effectFollowTarget = false;
     IEnumerator Attack()
     {
         float timer = 0;
@@ -236,13 +243,42 @@ public class AIBase : MonoBehaviour
             {
                 Debug.LogError("Warning... " + target.name + " doesn't have a health script!", target);
             }
+
+            //Play attack effect
+            effectFollowTarget = true;
+            weaponeffect.position = target.transform.position;
+            Vector3 vectorToTarget = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            weaponeffect.rotation = q;
+
+            anim.SetTrigger("Slash");
+
+            //CameraShake
+            CameraManager.Shake(0.1f, 0.25f);
         }
         else
         {
             //Missed attack (maybe some sort of effect)
         }
 
-        yield return new WaitForSeconds(attackduration);
+        timer = attackduration;
+        if (effectFollowTarget)
+        {
+            while(timer > 0)
+            {
+                weaponeffect.position = target.transform.position;
+                yield return 0;
+                timer -= Time.deltaTime;
+            }
+
+            effectFollowTarget = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(attackduration);
+        }
+
 
         //Move away again
         if (Vector2.Distance(startposition, target.transform.position) < personalSpace)
