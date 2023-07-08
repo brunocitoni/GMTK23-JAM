@@ -49,7 +49,6 @@ public class WaveManager : SerializedMonoBehaviour
         waveTimer.SetDuration(Data.waveLenghtInSeconds);
         waveTimer.RestartTimer();
         Debug.Log("Wave has started");
-        waveCounter++;
         isWaveOngoing = true;
         waitingForNewWave = false;
     }
@@ -82,6 +81,7 @@ public class WaveManager : SerializedMonoBehaviour
     public static void InvokeWaveComplete() {
         Debug.Log("Wave complete! Invoking the OnWaveComplete event");
         waitingForNewWave = true;
+        waveCounter++;
         OnWaveComplete?.Invoke();
     }
 
