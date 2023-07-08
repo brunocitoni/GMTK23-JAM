@@ -36,8 +36,6 @@ public class HeroAI : AIBase
 
     public override void Persueing()
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * movespeed);
-
         base.Persueing();
     }
 

@@ -8,8 +8,11 @@ public class Health : MonoBehaviour
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
 
+    public bool hasDied;
+
     public void Start()
     {
+        hasDied = false;
         SetHealth(maxHealth);
     }
 
@@ -37,6 +40,7 @@ public class Health : MonoBehaviour
     public void OnDeath()
     {
         OnThisDeath?.Invoke();
+        hasDied = true;
     }
 
 }

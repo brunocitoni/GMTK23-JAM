@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 163980578}
   - component: {fileID: 163980577}
   - component: {fileID: 163980580}
+  - component: {fileID: 163980581}
+  - component: {fileID: 163980582}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -157,9 +159,11 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
   movespeed: 3
+  alliesEvasionRadius: 3
   attackduration: 0.2
   attackCooldown: 1
   attackStopDistance: 0.3
@@ -256,6 +260,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!50 &163980581
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163980576}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &163980582
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163980576}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &313820474
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +309,8 @@ GameObject:
   - component: {fileID: 313820475}
   - component: {fileID: 313820477}
   - component: {fileID: 313820478}
+  - component: {fileID: 313820479}
+  - component: {fileID: 313820480}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -316,7 +359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8c3235661573d7b44bd864536f83d0ea, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0, g: 1, b: 0.13172197, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -357,9 +400,11 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
   movespeed: 5
+  alliesEvasionRadius: 3
   attackduration: 0.2
   attackCooldown: 1
   attackStopDistance: 0.3
@@ -389,6 +434,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!50 &313820479
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313820474}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &313820480
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313820474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &482694276
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +483,8 @@ GameObject:
   - component: {fileID: 482694278}
   - component: {fileID: 482694277}
   - component: {fileID: 482694280}
+  - component: {fileID: 482694281}
+  - component: {fileID: 482694282}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -423,9 +507,11 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
   movespeed: 3
+  alliesEvasionRadius: 3
   attackduration: 0.2
   attackCooldown: 1
   attackStopDistance: 0.3
@@ -522,6 +608,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!50 &482694281
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482694276}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &482694282
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482694276}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1719702858
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +741,8 @@ GameObject:
   - component: {fileID: 1865288410}
   - component: {fileID: 1865288412}
   - component: {fileID: 1865288413}
+  - component: {fileID: 1865288414}
+  - component: {fileID: 1865288415}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -707,9 +832,11 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
   movespeed: 3
+  alliesEvasionRadius: 3
   attackduration: 0.2
   attackCooldown: 1
   attackStopDistance: 0.3
@@ -739,3 +866,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!50 &1865288414
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865288409}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &1865288415
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865288409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

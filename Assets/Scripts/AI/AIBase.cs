@@ -9,12 +9,15 @@ public class AIBase : MonoBehaviour
 
     public GameObject target;
     public Vector2 targetPosition;
+    public Vector2 moveDirection;
+    Rigidbody2D rb;
 
     public Weapon heldWeapon;
 
     [Header("Persueing"), Tooltip("This multiplied with the weaponrange is where the person actually stops")]
     public float weaponRangeTolerance = 0.75f;
     public float movespeed = 5;
+    public float alliesEvasionRadius = 3;
 
     [Header("Atacking")]
     public float attackduration;
@@ -40,10 +43,18 @@ public class AIBase : MonoBehaviour
 
         if(GetComponent<Health>() != null)
             GetComponent<Health>().OnThisDeath += TargetDied;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+        if(target == null)
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
+
         //Simple statemachine that selects what should be updated based on the current state
         switch (currentState)
         {
@@ -65,12 +76,19 @@ public class AIBase : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = moveDirection * movespeed;
+    }
+
     /// <summary>
     /// Searches for a target. When a target is set flips the state to persueing
     /// </summary>
     public virtual void Searching()
     {
-        if(target != null)
+        moveDirection = Vector2.zero;
+
+        if (target != null)
         {
             currentState = AIStates.persueing;
             StartPersue.Invoke();
@@ -86,6 +104,27 @@ public class AIBase : MonoBehaviour
     public virtual void Persueing()
     {
         targetPosition = target.transform.position;
+        moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+
+        Collider2D[] allieCollisions = Physics2D.OverlapCircleAll(transform.position, alliesEvasionRadius);
+        int counter = 0;
+        Vector2 totalPosition = Vector2.zero;
+        foreach(Collider2D collider in allieCollisions)
+        {
+            if (collider.CompareTag(tag) && collider.gameObject != gameObject)
+            {
+                totalPosition.x += collider.transform.position.x;
+                totalPosition.y += collider.transform.position.y;
+                counter++;
+            }
+        }
+        if(counter != 0)
+        {
+            Vector2 centerOfGroup = new Vector2(totalPosition.x / counter, totalPosition.y / counter);
+            Vector2 evationDirection = -(centerOfGroup - (Vector2)transform.position).normalized * 0.5f;
+            moveDirection += evationDirection;
+            moveDirection.Normalize();
+        }
 
         if(Vector2.Distance(transform.position, target.transform.position) < heldWeapon.range * weaponRangeTolerance)
         {
@@ -100,6 +139,8 @@ public class AIBase : MonoBehaviour
     /// </summary>
     public virtual void Attacking()
     {
+        moveDirection = Vector2.zero;
+
         if (!attacking)
         {
             //Cancel Attacking State if target moves to far away
@@ -124,14 +165,17 @@ public class AIBase : MonoBehaviour
 
     IEnumerator Attack()
     {
+        float timer = 0;
         attacking = true;
         AIBase targetAI = target.GetComponent<AIBase>();
 
         Vector2 startposition = transform.position;
 
         //Move towards enemy
-        while (Vector2.Distance(transform.position, target.transform.position) > attackStopDistance && Vector2.Distance(transform.position, startposition) < heldWeapon.range)
+        timer = 0.4f;
+        while (timer > 0 && Vector2.Distance(transform.position, target.transform.position) > attackStopDistance && Vector2.Distance(transform.position, startposition) < heldWeapon.range)
         {
+            timer -= Time.deltaTime;
             transform.position = Vector2.Lerp(transform.position, target.transform.position, heldWeapon.attackMoveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -159,13 +203,16 @@ public class AIBase : MonoBehaviour
         yield return new WaitForSeconds(attackduration);
 
         //Move away again
-        if(Vector2.Distance(startposition, target.transform.position) < personalSpace)
+        if (Vector2.Distance(startposition, target.transform.position) < personalSpace)
         {
+
             startposition = (Vector2)transform.position + (startposition - (Vector2)transform.position).normalized * personalSpace;
         }
 
-        while (Vector2.Distance(transform.position, startposition) > .05f)
+        timer = 0.75f;
+        while (timer > 0 && Vector2.Distance(transform.position, startposition) > .05f)
         {
+            timer -= Time.deltaTime;
             transform.position = Vector2.Lerp(transform.position, startposition, heldWeapon.attackMoveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -181,11 +228,14 @@ public class AIBase : MonoBehaviour
     {
         if (attacking)
         {
-            target.GetComponent<AIBase>().attackers.Remove(gameObject);
+            if(target != null)
+                target.GetComponent<AIBase>().attackers.Remove(gameObject);
+                attackers.Remove(target);
         }
 
         target = null;
         currentState = AIStates.searching;
+        StartSearch.Invoke();
     }
 
     private void OnDestroy()
