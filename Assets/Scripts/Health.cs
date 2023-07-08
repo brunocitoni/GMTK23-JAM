@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
 
+    public InWorldSlider healthbar;
     Material spriteMaterial; 
 
     [HideInInspector]
@@ -26,7 +27,10 @@ public class Health : MonoBehaviour
 
     public void SetHealth(int health)
     {
+        healthbar = GetComponent<InWorldSlider>();
+
         maxHealth = health;
+        healthbar.maxValue = health;
         currentHealth = maxHealth;
         hasDied = false;
     }
@@ -36,7 +40,7 @@ public class Health : MonoBehaviour
         currentHealth += change;
         // clamp
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
+        healthbar.value = currentHealth;
         if(change < 0)
         {
             StartCoroutine(HitFlash());

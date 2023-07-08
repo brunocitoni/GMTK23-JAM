@@ -41,6 +41,8 @@ public class InWorldSlider : MonoBehaviour
 
     public void UpdateSlider(float val)
     {
+        if (slider == null || background == null) return;
+
         if(scaleDirection == Dir.X)
         {
             float targetScale = background.localScale.x * (val / maxValue);
