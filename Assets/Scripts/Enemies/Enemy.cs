@@ -9,12 +9,16 @@ public class Enemy : MonoBehaviour
 
     //private EnemyAI ai;
     private Health healthScript;
+    ItemSpawner itemSpawner;
 
     // Start is called before the first frame update
     void Start()
     {
         name = thisEnemy.enemyName;
         this.GetComponent<Image>().sprite = thisEnemy.enemySprite;
+
+        // get a reference to the itemSpawner
+        itemSpawner = GameObject.Find("ItemSpawner").GetComponent<ItemSpawner>();
 
         // assign a health script to this enemy
         healthScript = this.gameObject.AddComponent<Health>();
@@ -34,12 +38,13 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         // delete this and drop one of the possible items from enemy drop list TODO
-    }
+        Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
 
-    //debug only
-    /*private void Update()
-    {
-        transform.Translate(Vector3.left * thisEnemy.moveSpeed*100 * Time.deltaTime);
-    }*/
+        // drop item
+        itemSpawner.InstantiateItem(thisEnemy.drops[Random.Range(0, thisEnemy.drops.Count)], this.transform);
+
+        // delete this gameobject
+        Destroy(this);
+    }
 
 }
