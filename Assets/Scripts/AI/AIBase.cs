@@ -34,7 +34,7 @@ public class AIBase : MonoBehaviour
     [HideInInspector]
     public UnityEvent StartSearch, StartPersue, StartAttack, StartAvoiding;
 
-    void Start()
+    public virtual void Start()
     {
         currentState = AIStates.searching;
 
@@ -77,6 +77,11 @@ public class AIBase : MonoBehaviour
             case AIStates.avoiding_damage:
                 AvoidingDamage();
                 break;
+
+            case AIStates.out_of_battle:
+                OutOfBattle();
+                break;
+                
             case AIStates.dead:
                 break;
         }
@@ -199,6 +204,10 @@ public class AIBase : MonoBehaviour
         {
 
             Health h = target.GetComponent<Health>();
+            if(h.GetComponent<PlayerHealth>() != null)
+            {
+                Debug.Log("Attacked the player");
+            }
             if(h != null)
             {
                 if (h.ModifyHealth(-heldWeapon.damage))
@@ -245,6 +254,7 @@ public class AIBase : MonoBehaviour
 
     void OnDeath()
     {
+        print("I died");
         currentState = AIStates.dead;
     }
 
@@ -258,7 +268,10 @@ public class AIBase : MonoBehaviour
 
     }
 
+    public virtual void OutOfBattle()
+    {
 
+    }
 
     public enum AIStates
     {
@@ -266,6 +279,7 @@ public class AIBase : MonoBehaviour
         persueing,
         attacking,
         avoiding_damage,
+        out_of_battle,
         dead
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   range: 2
-  weaponLength: 0.5
+  weaponLength: 0.75
   attackMoveSpeed: 5

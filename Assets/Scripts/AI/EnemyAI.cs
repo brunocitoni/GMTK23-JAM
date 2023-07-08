@@ -6,7 +6,12 @@ public class EnemyAI : AIBase
 {
     public override void Searching()
     {
-        target = GameObject.Find("Hero");
+        target = GameObject.FindGameObjectWithTag("Hero");
+        if(target == null || target.GetComponent<Health>().hasDied)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+
         base.Searching();
     }
 

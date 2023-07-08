@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class HeroAI : AIBase
 {
-  //  [Header("Hero Specific")]
+    //  [Header("Hero Specific")]
 
+    public override void Start()
+    {
+        base.Start();
+
+        WaveManager.OnWaveComplete += ExitBattle;
+        WaveManager.OnWaveStart += StartBattle;
+    }
 
     public override void Searching()
     {
@@ -46,9 +53,29 @@ public class HeroAI : AIBase
         base.Attacking();
     }
 
-
     public override void AvoidingDamage()
     {
         base.AvoidingDamage();
     }
+
+    public override void OutOfBattle()
+    {
+        base.OutOfBattle();
+        targetPosition = Vector2.zero;
+
+        moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+
+    }
+
+    public void ExitBattle()
+    {
+        currentState = AIStates.out_of_battle;
+    }
+
+    public void StartBattle()
+    {
+        currentState = AIStates.searching;
+        StartSearch.Invoke();
+    }
+
 }

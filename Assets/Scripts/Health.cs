@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    int currentHealth;
+    public int currentHealth;
     public int maxHealth = 100; // default to 100, should be overritten;
 
     public delegate void DeathDelegate();
@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     [HideInInspector]
     public bool hasDied;
 
-    public void Start()
+    public virtual void Start()
     {
         spriteMaterial = GetComponentInChildren<SpriteRenderer>().material;
         if (gameObject.tag == "Hero" ) // if this is the health script of the hero
@@ -25,27 +25,34 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void SetHealth(int health)
+    public virtual void SetHealth(int health)
     {
         healthbar = GetComponent<InWorldSlider>();
 
         maxHealth = health;
-        healthbar.maxValue = health;
+        if(healthbar != null)
+            healthbar.maxValue = health;
         currentHealth = maxHealth;
         hasDied = false;
     }
 
-    public bool ModifyHealth(int change)
+    public virtual bool ModifyHealth(int change)
     {
         currentHealth += change;
         // clamp
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        healthbar.value = currentHealth;
+       
+        //Update Slider
+        if (healthbar != null)
+            healthbar.value = currentHealth;
+
+        //Hitflash
         if(change < 0)
         {
             StartCoroutine(HitFlash());
         }
 
+        //Check Death
         if (currentHealth <= 0) {
             OnDeath();
             return true;
