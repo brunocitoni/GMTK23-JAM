@@ -44,6 +44,10 @@ public class Health : MonoBehaviour
         if (change > 0)
         { // if we are gaining life no other checks should be made, just give the life that was input 
             currentHealth += change;
+            if(currentHealth > 0)
+            {
+                hasDied = false;
+            }
         }
         else { // if this entity is TAKING damage
 
