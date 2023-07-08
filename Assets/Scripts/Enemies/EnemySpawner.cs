@@ -12,12 +12,12 @@ public class EnemySpawner : MonoBehaviour
     public List<EnemySO> spawnableEnemies = new();
     public int currentNumberOfEnemiesSpawned;
 
-    public void Start()
+    /*public void Start()
     {
         GameManager.OnNewGame += OnNewGame;
-    }
+    }*/
 
-    private void OnNewGame()
+    private void Start()
     {
         GameManager.OnGameOver += StopSpawning;
         WaveManager.OnWaveStart += StartSpawning;

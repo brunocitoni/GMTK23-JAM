@@ -16,15 +16,6 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (PlayerPrefs.GetInt("MyIntValue") == 1)
-        {
-            mainMenuScreen.SetActive(false);
-            gameManager.OnClickNewGame();
-        }
-        else
-        {
-            mainMenuScreen.SetActive(true);
-        }
         gameOverScreen.SetActive(false);
         // these need to initialise then will automatically reset to false
         endWavePanel.SetActive(true);

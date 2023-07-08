@@ -18,13 +18,13 @@ public class WaveManager : SerializedMonoBehaviour
     public delegate void WaveStarting();
     public static event WaveStarting OnWaveStart;
 
-    public void Start()
+    /*public void Start()
     {
         GameManager.OnNewGame += OnNewGame;
         GameManager.OnGameOver += OnGameOver;
-    }
+    }*/
 
-    private void OnNewGame()
+    private void Start()
     {
 
         // get a reference to the enemySpawner to stop and start the spawns
@@ -40,7 +40,7 @@ public class WaveManager : SerializedMonoBehaviour
     private void OnDestroy()
     {
         waveTimer.TimerElapsed -= EndWave;
-        GameManager.OnNewGame -= OnNewGame;
+        //GameManager.OnNewGame -= OnNewGame;
     }
 
     public static void StartWave()

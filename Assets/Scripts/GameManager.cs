@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         PlayerHealth.OnPlayerDeath -= TriggerGameOver;
-        PlayerPrefs.SetInt("restart", 0);
-        PlayerPrefs.Save();
     }
 
     public void TriggerGameOver() {
@@ -55,13 +53,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnClickNewGame() {
+        SceneManager.LoadScene("GameScene");
         OnNewGame?.Invoke();
     }
 
     public void OnClickRestart() {
-        PlayerPrefs.SetInt("restart", 1);
-        PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnClickQuit() {
+        Application.Quit();
     }
 
 }
