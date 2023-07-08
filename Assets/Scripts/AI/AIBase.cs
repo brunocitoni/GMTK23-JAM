@@ -53,12 +53,6 @@ public class AIBase : MonoBehaviour
 
     void Update()
     {
-        if(target == null)
-        {
-            currentState = AIStates.searching;
-            StartSearch.Invoke();
-        }
-
         //Simple statemachine that selects what should be updated based on the current state
         switch (currentState)
         {
@@ -105,8 +99,11 @@ public class AIBase : MonoBehaviour
             StartPersue.Invoke();
             return;
         }
-        
-
+        else
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
     }
 
     /// <summary>
@@ -143,6 +140,12 @@ public class AIBase : MonoBehaviour
             StartAttack.Invoke();
             return;
         }
+
+        if (target == null)
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
     }
 
     /// <summary>
@@ -171,7 +174,11 @@ public class AIBase : MonoBehaviour
             return;
         }
 
-        
+        if (target == null)
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
     }
 
     IEnumerator Attack()
@@ -254,7 +261,6 @@ public class AIBase : MonoBehaviour
 
     void OnDeath()
     {
-        print("I died");
         currentState = AIStates.dead;
     }
 
