@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,6 +10,8 @@ public class Health : MonoBehaviour
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
 
+    Material spriteMaterial; 
+
     [HideInInspector]
     public bool hasDied;
 
@@ -15,6 +19,8 @@ public class Health : MonoBehaviour
     {
         hasDied = false;
         SetHealth(maxHealth);
+
+        spriteMaterial = GetComponent<SpriteRenderer>().material;
     }
 
     public void OnDestroy()
@@ -33,9 +39,21 @@ public class Health : MonoBehaviour
         // clamp
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+        if(change < 0)
+        {
+            StartCoroutine(HitFlash());
+        }
+
         if (currentHealth <= 0) {
             OnDeath();
         }
+    }
+
+    IEnumerator HitFlash()
+    {
+        spriteMaterial.SetFloat("_Flash", 1);
+        yield return new WaitForSeconds(0.1f);
+        spriteMaterial.SetFloat("_Flash", 0);
     }
 
     public void OnDeath()
