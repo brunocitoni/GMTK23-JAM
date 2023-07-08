@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         spriteMaterial = GetComponentInChildren<SpriteRenderer>().material;
         if (gameObject.tag == "Hero" ) // if this is the health script of the hero
         {
-            SetHealth(heroHealth);
+            SetHealth(Data.heroMaxHealth);
         }
     }
 
