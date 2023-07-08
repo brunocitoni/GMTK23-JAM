@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
     public List<ItemSO> itemsHeld = new();
     public Inventory_UI inv_UI;
 
+    public static int potionsDrank = 0;
+
     public delegate void HealthPotion();
     public static event HealthPotion OnHealthPotionGiven;
 
@@ -47,16 +49,19 @@ public class PlayerInventory : MonoBehaviour
             case "HealthPotion":
                 // health 1/2 hp to hero
                 Debug.Log("health potion given, invoking now");
+                potionsDrank++;
                 OnHealthPotionGiven?.Invoke();
                 break;
             case "AttackPotion":
                 // add some attack power for some time
                 Debug.Log("attack potion given, invoking now");
+                potionsDrank++;
                 OnAttackPotionGiven?.Invoke();
                 break;
             case "DefencePotion":
                 //add some shild for some time
                 Debug.Log("defence potion given, invoking now");
+                potionsDrank++;
                 OnDefencePotionGiven?.Invoke();
                     break;
             default:

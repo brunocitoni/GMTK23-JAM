@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
 
         // remove this enemy from currently spawned ones
         enemySpawner.currentNumberOfEnemiesSpawned--;
+        EnemySpawner.enemyKilled++;
 
         //Debug.Log("enemies left: " + enemySpawner.currentNumberOfEnemiesSpawned);
 

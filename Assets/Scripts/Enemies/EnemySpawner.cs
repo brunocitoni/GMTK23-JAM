@@ -11,11 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<GameObject> spawnLocations = new(); 
     public List<EnemySO> spawnableEnemies = new();
     public int currentNumberOfEnemiesSpawned;
-
-    /*public void Start()
-    {
-        GameManager.OnNewGame += OnNewGame;
-    }*/
+    public static int enemyKilled = 0;
 
     private void Start()
     {

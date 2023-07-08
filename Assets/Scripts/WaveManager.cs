@@ -10,6 +10,11 @@ public class WaveManager : SerializedMonoBehaviour
     EnemySpawner enemySpawner;
     public static bool isWaveOngoing = false;
     public static bool waitingForNewWave = true;
+    public static int waveCounter = 0;
+
+    [SerializeField] GameManager gameManager;
+
+    private Health heroHealth;
 
     // events
     public delegate void WaveComplete();
@@ -18,17 +23,12 @@ public class WaveManager : SerializedMonoBehaviour
     public delegate void WaveStarting();
     public static event WaveStarting OnWaveStart;
 
-    /*public void Start()
-    {
-        GameManager.OnNewGame += OnNewGame;
-        GameManager.OnGameOver += OnGameOver;
-    }*/
-
     private void Start()
     {
 
         // get a reference to the enemySpawner to stop and start the spawns
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        heroHealth = GameObject.FindGameObjectWithTag("Hero").GetComponent<Health>();
 
         waveTimer = this.GetComponent<Timer>();
         waveTimer.TimerElapsed += EndWave;
@@ -49,6 +49,7 @@ public class WaveManager : SerializedMonoBehaviour
         waveTimer.SetDuration(Data.waveLenghtInSeconds);
         waveTimer.RestartTimer();
         Debug.Log("Wave has started");
+        waveCounter++;
         isWaveOngoing = true;
         waitingForNewWave = false;
     }
@@ -65,6 +66,11 @@ public class WaveManager : SerializedMonoBehaviour
         // stop enemy spawning
         enemySpawner.StopSpawning();
         isWaveOngoing = false;
+
+        //check if the hero is alive
+        if (heroHealth.hasDied) {
+            gameManager.TriggerGameOver();
+        }
 
         // check if there are currently no enemies alive
         if(enemySpawner.currentNumberOfEnemiesSpawned <= 0) {

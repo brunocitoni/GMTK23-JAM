@@ -553,6 +553,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  gameManager: {fileID: 6989693072795479560, guid: dfefd3fa81fa24c3d868222b48ff501e, type: 3}
 --- !u!4 &1444371242
 Transform:
   m_ObjectHideFlags: 0
@@ -696,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0faed18e690c4deab5ee8fa60aae578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 10
   enemyPrefab: {fileID: 5728163926067688090, guid: f3e034d99e07b429e98ca51308a1e917, type: 3}
   spawnerTimer: {fileID: 1515803656}
   spawnLocations:
@@ -767,34 +768,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6989693072795479560, guid: dfefd3fa81fa24c3d868222b48ff501e, type: 3}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickQuit
-      objectReference: {fileID: 0}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 317378090, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 946779995293708954, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
