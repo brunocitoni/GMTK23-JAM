@@ -9,6 +9,7 @@ public class EnemySO : ScriptableObject
     public int enemyAtk;
     public int enemyMaxHealth;
     public List<ItemSO> drops;
+    public List<float> dropRate;
 
     [Space(10) ,Header("EnemyAI")]
     [Header("Persueing"), Tooltip("This multiplied with the weaponrange is where the person actually stops")]

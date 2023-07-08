@@ -40,20 +40,28 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // delete this and drop one of the possible items from enemy drop list TODO
-        Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
-
+        //Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
+        Debug.Log("Dead");
         // drop item
-        itemSpawner.InstantiateItem(thisEnemy.drops[Random.Range(0, thisEnemy.drops.Count)], this.transform);
+        for(int i=0; i<thisEnemy.drops.Count; i++)
+        {
+            float chance =thisEnemy.dropRate[i];
+            float prob = Random.Range(0f, 1f);
+            Debug.Log(prob);
+            if (prob>chance)
+            {
+                 itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
+            }
+        }
 
-        Debug.Log("Destroyinh enemy " + thisEnemy.enemyName);
+        //Debug.Log("Destroyinh enemy " + thisEnemy.enemyName);
         // delete this gameobject
         Destroy(this.gameObject);
 
         // remove this enemy from currently spawned ones
         enemySpawner.currentNumberOfEnemiesSpawned--;
 
-        Debug.Log("enemies left: " + enemySpawner.currentNumberOfEnemiesSpawned);
+        //Debug.Log("enemies left: " + enemySpawner.currentNumberOfEnemiesSpawned);
 
         // check if all the enemies are dead while the wave timer is over
         if (enemySpawner.currentNumberOfEnemiesSpawned <= 0 && !WaveManager.isWaveOngoing)

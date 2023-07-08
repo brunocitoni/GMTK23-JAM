@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de6be83915b9b45e3a755222792ff699, type: 3}
-  m_Name: Scoundrel
+  m_Name: Gladiator
   m_EditorClassIdentifier: 
-  enemyName: Scoundrel
-  enemySprite: {fileID: 21300000, guid: 7af5f1b9cb7fc7645a9f27f070fbe2fd, type: 3}
+  enemyName: Gladiator
+  enemySprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
   enemyAtk: 10
-  enemyMaxHealth: 50
+  enemyMaxHealth: 250
   drops:
   - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
   - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
-  - {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
+  - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
   dropRate:
-  - 0.5
-  - 0.2
+  - 0.8
+  - 0.3
   - 0.2
   weaponRangeTolerance: 0.6
   moveSpeed: 3

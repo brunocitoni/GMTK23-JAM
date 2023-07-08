@@ -15,10 +15,13 @@ MonoBehaviour:
   enemyName: Orc
   enemySprite: {fileID: 21300000, guid: 66fa19194577350438c952106f661c2f, type: 3}
   enemyAtk: 10
-  enemyMaxHealth: 50
+  enemyMaxHealth: 150
   drops:
-  - {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
-  - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
+  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
+  dropRate:
+  - 0.5
+  - 0.3
   weaponRangeTolerance: 0.6
   moveSpeed: 3
   alliesEvasionRadius: 3

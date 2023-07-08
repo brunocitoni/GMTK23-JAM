@@ -10,7 +10,6 @@ public class Item : MonoBehaviour
     void Start()
     {
         name = thisItem.itemName;
-        //this.itemType = thisItem.itemType;
         this.GetComponent<SpriteRenderer>().sprite = thisItem.itemSprite;
         
     }

@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de6be83915b9b45e3a755222792ff699, type: 3}
-  m_Name: Goblin
+  m_Name: Boar
   m_EditorClassIdentifier: 
-  enemyName: Goblin
-  enemySprite: {fileID: 21300000, guid: 3b4e88f5705085042a95960cdcef2561, type: 3}
-  enemyAtk: 5
-  enemyMaxHealth: 25
+  enemyName: Boar
+  enemySprite: {fileID: 21300000, guid: 5430b5412bcac5b4986be0a875a5e978, type: 3}
+  enemyAtk: 10
+  enemyMaxHealth: 100
   drops:
-  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
-  - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
+  - {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
+  dropRate:
+  - 0.5
+  - 0.4
   weaponRangeTolerance: 0.6
   moveSpeed: 3
   alliesEvasionRadius: 3
