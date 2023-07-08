@@ -9,11 +9,11 @@ public class UpgradePanel : MonoBehaviour
     [SerializeField] HeroManager heroManager;
     [SerializeField] PlayerInventory inventory;
 
-    int[] upgradeMaterialIRONWeapon = { 2, 4, 4 };
+    int[] upgradeMaterialIRONWeapon = { 2, 2, 4,4 };
 
-    int[] upgradeMaterialIRON = { 1, 2, 2 };
-    int[] upgradeMaterialLEATHER = { 1, 2, 2 };
-    int[] upgradeMaterialSCRAP = { 1, 2, 2 };
+    int[] upgradeMaterialIRON = { 1, 1,2, 2 };
+    int[] upgradeMaterialLEATHER = { 1, 1,2, 2 };
+    int[] upgradeMaterialSCRAP = { 1, 1,2, 2 };
 
     [SerializeField] TMP_Text ironRequiredWeapon;
     [SerializeField] TMP_Text scrapsRequiredWeapon; 
@@ -35,26 +35,23 @@ public class UpgradePanel : MonoBehaviour
     // display requirements in terms on items and update UI to reflect whether buttons should be enabled
     private void UpdateUI() {
 
-        //check if max level already
-
-
         ironRequiredForWeapon = upgradeMaterialIRONWeapon[heroManager.weaponLevel];
         scrapRequiredForWeapon = upgradeMaterialSCRAP[heroManager.weaponLevel];
 
-        ironRequiredWeapon.text = ironRequiredForWeapon.ToString();
-        scrapsRequiredWeapon.text = scrapRequiredForWeapon.ToString();
+        ironRequiredWeapon.text = "x" + ironRequiredForWeapon.ToString();
+        scrapsRequiredWeapon.text = "x" + scrapRequiredForWeapon.ToString();
 
         ironRequiredForArmor = upgradeMaterialIRON[heroManager.armorLevel];
         leatherRequiredForArmor = upgradeMaterialLEATHER[heroManager.armorLevel];
         scrapRequiredForArmor = upgradeMaterialSCRAP[heroManager.armorLevel];
 
-        ironRequiredArmor.text = ironRequiredForArmor.ToString();
-        leatherRequiredArmor.text = leatherRequiredForArmor.ToString();
-        scrapsRequiredArmor.text = scrapRequiredForArmor.ToString();
+        ironRequiredArmor.text = "x" + ironRequiredForArmor.ToString();
+        leatherRequiredArmor.text = "x" + leatherRequiredForArmor.ToString();
+        scrapsRequiredArmor.text = "x" + scrapRequiredForArmor.ToString();
 
+        CheckIfUpgradeIsAvailable();
 
-
-
+        CheckIfMaxLevel();
     }
 
     public void CheckIfUpgradeIsAvailable() {
@@ -64,40 +61,81 @@ public class UpgradePanel : MonoBehaviour
         leatherHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Leather").Count;
         if (ironHeld >= ironRequiredForWeapon && scrapHeld >= scrapRequiredForWeapon) {
 
-            WeaponUpgradeAvailable(true);
+            WeaponUpgradeAvailable(true, "Upgrade!");
         } else {
-            WeaponUpgradeAvailable(false);
+            WeaponUpgradeAvailable(false, "You lack the required components");
         }
 
         if (leatherHeld >= leatherRequiredForArmor && ironHeld >= ironRequiredForArmor && scrapHeld >= scrapRequiredForArmor) {
-            ArmorUpgradeAvailable(true);
+            ArmorUpgradeAvailable(true, "Upgrade!");
         }
         else {
-            ArmorUpgradeAvailable(false);
+            ArmorUpgradeAvailable(false, "You lack the required components");
         }
     }
 
-    private void WeaponUpgradeAvailable(bool available) {
-        // enable upgrade button
-        upgradeWeaponButton.interactable = available;
+    private void CheckIfMaxLevel() {
+
+        if (heroManager.armorLevel == 3) {
+            ArmorUpgradeAvailable(false, "You can't upgrade the hero's armor any further");
+        }
+
+        if (heroManager.weaponLevel == 3)
+        {
+            WeaponUpgradeAvailable(false, "You can't upgrade the hero's weapon any further");
+        }
+
+
     }
 
-    private void ArmorUpgradeAvailable(bool available)
+    private void WeaponUpgradeAvailable(bool available, string message = "") {
+        // enable upgrade button
+        upgradeWeaponButton.interactable = available;
+        upgradeWeaponButton.GetComponentInChildren<TMP_Text>().text = message;
+    }
+
+    private void ArmorUpgradeAvailable(bool available, string message = "")
     {
         // enable upgrade button
         upgradeArmorButton.interactable = available;
+        upgradeArmorButton.GetComponentInChildren<TMP_Text>().text = message;
 
     }
 
     public void UpgradeWeapon() {
         heroManager.weaponLevel++;
+        RemoveItemsFromInventory("Iron", ironRequiredForWeapon);
+        RemoveItemsFromInventory("Scrap", scrapRequiredForWeapon);
         UpdateUI();
     }
 
     public void UpgradeArmor() {
 
         heroManager.armorLevel++;
+        RemoveItemsFromInventory("Iron", ironRequiredForArmor);
+        RemoveItemsFromInventory("Scrap", scrapRequiredForArmor);
+        RemoveItemsFromInventory("Leather", leatherRequiredForArmor);
         UpdateUI();
+    }
+
+    private void RemoveItemsFromInventory(string itemName, int count)
+    {
+        List<ItemSO> itemsToRemove = inventory.itemsHeld.FindAll(item => item.itemName == itemName);
+
+        for (int i = 0; i < count; i++)
+        {
+            if (itemsToRemove.Count > 0)
+            {
+                inventory.itemsHeld.Remove(itemsToRemove[0]);
+                itemsToRemove.RemoveAt(0);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        inventory.RefreshUI();
     }
 
 

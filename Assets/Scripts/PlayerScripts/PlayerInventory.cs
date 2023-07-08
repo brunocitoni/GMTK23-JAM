@@ -27,24 +27,28 @@ public class PlayerInventory : MonoBehaviour
         isPassingItem = false;
     }
 
+    public void RefreshUI() {
+        inv_UI.Setup();
+    }
+
     public void AddItemToInventory(ItemSO itemToAdd)
     {
         itemsHeld.Add(itemToAdd);
-        inv_UI.Setup();
+        RefreshUI();
     }
 
     public void DropItem(Slot_UI inventorySlot, ItemSO itemToDrop)
     {
         itemsHeld.Remove(itemToDrop);
         inventorySlot.SetEmpty();
-        inv_UI.Setup();
+        RefreshUI();
     }
 
     public void GiveItemToHero(Slot_UI inventorySlot, ItemSO itemToThrow)
     {
         itemsHeld.Remove(itemToThrow);
         inventorySlot.SetEmpty();
-        inv_UI.Setup();
+        RefreshUI();
         ApplyEffect(itemToThrow);
         StartCoroutine(AnimateGivingItem());
     }

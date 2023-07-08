@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public bool defencePotion = false;
     public bool attackPotion = false;
 
+    public int attackModifier = 0;
+    public int defenceModifier = 0;
+
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
 
@@ -25,6 +28,7 @@ public class Health : MonoBehaviour
         if (gameObject.tag == "Hero") // if this is the health script of the hero
         {
             SetHealth(Data.heroMaxHealth);
+            
         }
     }
 

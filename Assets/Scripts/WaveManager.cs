@@ -72,6 +72,10 @@ public class WaveManager : SerializedMonoBehaviour
         Debug.Log("Wave complete! Invoking the OnWaveComplete event");
         waitingForNewWave = true;
         waveCounter++;
+
+        // destroy all objects left lying around
+        UtilityFunctions.DestroyAllChildren(GameObject.Find("ItemSpawner"));
+
         OnWaveComplete?.Invoke();
     }
 

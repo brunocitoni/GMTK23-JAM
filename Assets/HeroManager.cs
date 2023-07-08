@@ -13,6 +13,9 @@ public class HeroManager : MonoBehaviour
     public int armorLevel = 0;
     public int weaponLevel = 0;
 
+    public int attackModifier;
+    public int defenceModifier;
+
     private void Start()
     {
         PlayerInventory.OnHealthPotionGiven += HealthPotion;
@@ -51,5 +54,14 @@ public class HeroManager : MonoBehaviour
         heroHealth.defencePotion = true;
         activeEffectTimer.TimerElapsed += () => { heroHealth.defencePotion = false; defenceBuffActive = false; };
         activeEffectTimer.RestartTimer();
+    }
+
+    private void CalculateAttackModifier() {
+
+        attackModifier = (weaponLevel * heroAI.heldWeapon.damage);
+    }
+
+    private void CalculateDefenceModifier() {
+        defenceModifier = armorLevel * 2;
     }
 }
