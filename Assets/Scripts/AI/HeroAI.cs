@@ -18,8 +18,9 @@ public class HeroAI : AIBase
             float distance = Vector2.Distance(enemy.transform.position, transform.position);
             if(distance < closestDistance)
             {
-                tempTarget = enemy;
+                if (enemy.GetComponent<Health>().hasDied) continue;
 
+                tempTarget = enemy;
                 closestDistance = distance;
             }
         }

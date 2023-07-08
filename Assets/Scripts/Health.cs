@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
 
+    [HideInInspector]
     public bool hasDied;
 
     public void Start()
