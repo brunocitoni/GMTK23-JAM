@@ -7,7 +7,6 @@ using UnityEngine;
 public class WaveManager : SerializedMonoBehaviour
 {
     public static Timer waveTimer;
-    public static int waveLenghtInSeconds;
     EnemySpawner enemySpawner;
     public static bool isWaveOngoing = false;
 
@@ -23,8 +22,9 @@ public class WaveManager : SerializedMonoBehaviour
         // get a reference to the enemySpawner to stop and start the spawns
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
 
+        waveTimer = this.GetComponent<Timer>();
         waveTimer.TimerElapsed += EndWave;
-        waveTimer.SetDuration(waveLenghtInSeconds);
+        waveTimer.SetDuration(Data.waveLenghtInSeconds);
         waveTimer.display = true;
         InvokeWaveStart();
     }
@@ -37,7 +37,7 @@ public class WaveManager : SerializedMonoBehaviour
     public static void StartWave()
     {
         // start the wave timer
-        waveTimer.SetDuration(waveLenghtInSeconds);
+        waveTimer.SetDuration(Data.waveLenghtInSeconds);
         waveTimer.RestartTimer();
         Debug.Log("Wave has started");
         isWaveOngoing = true;

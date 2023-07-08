@@ -90,5 +90,7 @@ public class Timer : MonoBehaviour
                 OnTimerFinish();
             }
         }
+
+        Debug.Log(timer);
     }
 }
