@@ -83,6 +83,7 @@ public class AIBase : MonoBehaviour
                 break;
                 
             case AIStates.dead:
+                Dead();
                 break;
         }
     }
@@ -317,6 +318,11 @@ public class AIBase : MonoBehaviour
     }
 
     public virtual void OutOfBattle()
+    {
+
+    }
+
+    public virtual void Dead()
     {
 
     }

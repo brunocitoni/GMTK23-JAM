@@ -28,7 +28,7 @@ public class SideckickMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WaveManager.waitingForNewWave) {
+        if (WaveManager.waitingForNewWave || PlayerInventory.isPassingItem) {
             playerspeed = 0;
             return;
         }

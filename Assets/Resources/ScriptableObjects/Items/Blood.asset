@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Blood
   m_EditorClassIdentifier: 
   itemName: Blood
-  itemSprite: {fileID: 21300000, guid: 6cc5103edc9f0dd4f80e8274c73dfeac, type: 3}
+  itemSprite: {fileID: 21300000, guid: 307c33cdc13f575459674278e48aaf4c, type: 3}
   givable: 0

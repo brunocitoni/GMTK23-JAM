@@ -30,4 +30,10 @@ public class EnemyAI : AIBase
     {
         base.AvoidingDamage();
     }
+
+    public void ResetState()
+    {
+        currentState = AIStates.searching;
+        StartSearch.Invoke();
+    }
 }

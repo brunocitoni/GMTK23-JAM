@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public static bool isPassingItem;
+
     public List<ItemSO> itemsHeld = new();
     public Inventory_UI inv_UI;
+    Animator anim;
 
     public static int potionsDrank = 0;
 
@@ -17,6 +20,12 @@ public class PlayerInventory : MonoBehaviour
 
     public delegate void DefencePotion();
     public static event DefencePotion OnDefencePotionGiven;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        isPassingItem = false;
+    }
 
     public void AddItemToInventory(ItemSO itemToAdd)
     {
@@ -38,6 +47,15 @@ public class PlayerInventory : MonoBehaviour
         inventorySlot.SetEmpty();
         inv_UI.Setup();
         ApplyEffect(itemToThrow);
+        StartCoroutine(AnimateGivingItem());
+    }
+
+    IEnumerator AnimateGivingItem()
+    {
+        isPassingItem = true;
+        anim.SetTrigger("PassItem");
+        yield return new WaitForSeconds(0.5f);
+        isPassingItem = false;
     }
 
     public void ApplyEffect(ItemSO itemGiven)

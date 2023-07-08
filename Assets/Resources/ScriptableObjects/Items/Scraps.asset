@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Scraps
   m_EditorClassIdentifier: 
   itemName: Scraps
-  itemSprite: {fileID: 21300000, guid: be340a165cb9c8d4cb50f1deeb51d4ea, type: 3}
+  itemSprite: {fileID: 21300000, guid: c7589e542a2dfea4eacac33350130ff6, type: 3}
   givable: 0

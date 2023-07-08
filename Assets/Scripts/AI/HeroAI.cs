@@ -70,7 +70,21 @@ public class HeroAI : AIBase
         targetPosition = Vector2.zero;
 
         moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+    }
 
+    public override void Dead()
+    {
+        if(GetComponent<Health>().currentHealth > 0)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in enemies)
+            {
+                enemy.GetComponent<EnemyAI>().ResetState();
+            }
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
+        base.Dead();
     }
 
     public void ExitBattle()
