@@ -6,7 +6,6 @@ public class Health : MonoBehaviour
 {
     int currentHealth;
     public int maxHealth = 100; // default to 100, should be overritten;
-    public int heroHealth = 1000;
 
     public delegate void DeathDelegate();
     public DeathDelegate OnThisDeath; // Event to be invoked on death
