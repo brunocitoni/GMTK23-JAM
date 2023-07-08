@@ -51,7 +51,7 @@ public class UpgradePanel : MonoBehaviour
 
     public void UpgradeWeapon() {
         heroManager.weaponLevel++;
-        UpdateUI()
+        UpdateUI();
     }
 
     public void UpgradeArmor() {
