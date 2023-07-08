@@ -7,12 +7,18 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] Timer waveTimer;
     [SerializeField] int waveLenghtInSeconds;
-    [SerializeField] EnemySpawner enemySpawner;
-    public bool isWaveOngoing = false;
+    EnemySpawner enemySpawner;
+    public static bool isWaveOngoing = false;
+
+    // events
+    public delegate void WaveComplete();
+    public static event WaveComplete OnWaveComplete;
 
     private void Start()
     {
-        //GameManager.OnNewGame += StartWave;
+        // get a reference to the enemySpawner to stop and start the spawns
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+
         waveTimer.TimerElapsed += EndWave;
         waveTimer.SetDuration(waveLenghtInSeconds);
         waveTimer.display = true;
@@ -35,13 +41,22 @@ public class WaveManager : MonoBehaviour
 
     private void EndWave()
     {
-        Debug.Log("Wave has ended");
+        Debug.Log("Wave time has ended");
 
         // stop enemy spawning
         enemySpawner.StopSpawning();
         isWaveOngoing = false;
 
-        // now when last enemy is killed fire off a Waiting next wave event
+        // check if there are currently no enemies alive
+        if(enemySpawner.currentNumberOfEnemiesSpawned <= 0) {
+            InvokeWaveComplete();
+        }
 
+        // else we need to wait for the call to en the wave coming from the last enemy getting killed by the hero
+    }
+
+    // this needs to be called by the enemy that dies AFTER the spawner has ceased spawning
+    public static void InvokeWaveComplete() {
+        OnWaveComplete?.Invoke();
     }
 }

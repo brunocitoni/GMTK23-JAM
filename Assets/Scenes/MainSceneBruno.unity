@@ -631,8 +631,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveTimer: {fileID: 1444371240}
-  waveLenghtInSeconds: 60
-  isWaveOngoing: 0
+  waveLenghtInSeconds: 10
+  enemySpawner: {fileID: 0}
 --- !u!4 &1444371242
 Transform:
   m_ObjectHideFlags: 0
@@ -752,6 +752,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0774537f74f244e281dd56157afad83, type: 2}
   - {fileID: 11400000, guid: 3b970d627dd8f47768150e2504f9ecb5, type: 2}
   - {fileID: 11400000, guid: d2a57e882e55e41059ae360921dacadb, type: 2}
+  currentNumberOfEnemiesSpawned: 0
 --- !u!4 &1515803658
 Transform:
   m_ObjectHideFlags: 0
