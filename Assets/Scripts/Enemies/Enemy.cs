@@ -58,7 +58,6 @@ public class Enemy : MonoBehaviour
         // check if all the enemies are dead while the wave timer is over
         if (enemySpawner.currentNumberOfEnemiesSpawned <= 0 && !WaveManager.isWaveOngoing)
         {
-            Debug.Log("Wave complete! Invoking the OnWaveComplete event");
             WaveManager.InvokeWaveComplete();
         }
     }

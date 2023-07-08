@@ -51,12 +51,11 @@ public class WaveManager : MonoBehaviour
         if(enemySpawner.currentNumberOfEnemiesSpawned <= 0) {
             InvokeWaveComplete();
         }
-
-        // else we need to wait for the call to en the wave coming from the last enemy getting killed by the hero
     }
 
     // this needs to be called by the enemy that dies AFTER the spawner has ceased spawning
     public static void InvokeWaveComplete() {
+        Debug.Log("Wave complete! Invoking the OnWaveComplete event");
         OnWaveComplete?.Invoke();
     }
 }
