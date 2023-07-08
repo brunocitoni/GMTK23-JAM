@@ -25,7 +25,7 @@ public class PlayerPickup : MonoBehaviour
         if (coll.tag == "Item")
         {
             ItemSO item = coll.GetComponent<Item>().thisItem;
-            if (item != null)
+            if (item != null && pI.itemsHeld.Count<10)
             {
                 pI.AddItemToInventory(item);
                 Destroy(coll.gameObject);

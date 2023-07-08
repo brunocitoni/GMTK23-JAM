@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<ItemSO> itemsHeld = new();
+    public Inventory_UI inv_UI;
 
     public void AddItemToInventory(ItemSO itemToAdd)
     {
         itemsHeld.Add(itemToAdd);
-        Debug.Log("AddItemToInventoryDone");
+        inv_UI.Setup();
     }
 
     public void ThrowItem(ItemSO itemToThrow)
