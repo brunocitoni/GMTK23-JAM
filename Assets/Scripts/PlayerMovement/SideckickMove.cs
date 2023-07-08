@@ -23,6 +23,7 @@ public class SideckickMove : MonoBehaviour
     void Update()
     {
         if (WaveManager.waitingForNewWave) {
+            playerspeed = 0;
             return;
         }
 
