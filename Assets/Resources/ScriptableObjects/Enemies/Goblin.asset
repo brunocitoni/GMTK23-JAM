@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Goblin
   enemySprite: {fileID: 21300000, guid: 3b4e88f5705085042a95960cdcef2561, type: 3}
-  enemyAtk: 0
-  enemyMaxHealth: 0
+  enemyAtk: 5
+  enemyMaxHealth: 25
   drops:
   - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
   - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}

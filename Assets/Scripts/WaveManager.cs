@@ -6,15 +6,13 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] Timer waveTimer;
     [SerializeField] int waveLenghtInSeconds;
-
+    public bool isWaveOngoing = false;
 
     private void Start()
     {
         GameManager.OnNewGame += StartWave;
         waveTimer.TimerElapsed += EndWave;
         waveTimer.SetDuration(waveLenghtInSeconds);
-        // need to subscribe to a New Game event to start the timer
-
     }
 
     private void OnDestroy()
@@ -24,10 +22,16 @@ public class WaveManager : MonoBehaviour
 
     private void StartWave()
     {
-       
+        // start the wave timer
+        waveTimer.SetDuration(waveLenghtInSeconds);
+        waveTimer.RestartTimer();
+        Debug.Log("Wave has started");
+        isWaveOngoing = true;
     }
 
-    private void EndWave() {
-
+    private void EndWave()
+    {
+        Debug.Log("Wave has ended");
+        isWaveOngoing = false;
     }
 }
