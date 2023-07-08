@@ -6,11 +6,11 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
 
-    [SerializeField] TMP_Text timerText;
+    public TMP_Text timerText;
     private float timeDuration;
     private float timer;
     private bool isCounting = false;
-    [SerializeField] bool display = false;
+    public bool display = false;
 
     // events
     public delegate void OnTimerElapsed();
@@ -65,8 +65,8 @@ public class Timer : MonoBehaviour
         // Convert timer to TimeSpan
         TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
 
-        // Format the timer as minutes:seconds
-        string formattedTime = string.Format("{0:00}:{1:00}:{2:00}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
+        // Format the timer as seconds
+        string formattedTime = string.Format("{0:00}", timeSpan.Seconds);
 
         // Update the timer text
         timerText.text = formattedTime;

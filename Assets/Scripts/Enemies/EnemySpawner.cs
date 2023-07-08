@@ -13,9 +13,9 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         spawnerTimer.TimerElapsed += SpawnEnemy;
-        spawnerTimer.SetDuration(timeBetweenSpawns);
-        spawnerTimer.RestartTimer();
+
         SpawnEnemy(); // debug
+        StartSpawning();
     }
 
     private void OnDestroy()
@@ -32,5 +32,15 @@ public class EnemySpawner : MonoBehaviour
         newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)]; // assign a random enemy to this specific enemy
 
         spawnerTimer.RestartTimer(); // at the moment only fixed time spawns, can make it more random if needs be todo
+    }
+
+    public void StartSpawning() {
+        spawnerTimer.SetDuration(timeBetweenSpawns);
+        spawnerTimer.RestartTimer();
+    }
+
+    public void StopSpawning() {
+
+        spawnerTimer.StopTimer();
     }
 }
