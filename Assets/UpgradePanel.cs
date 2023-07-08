@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradePanel : MonoBehaviour
 {
@@ -15,10 +16,16 @@ public class UpgradePanel : MonoBehaviour
     int[] upgradeMaterialSCRAP = { 1, 2, 2 };
 
     [SerializeField] TMP_Text ironRequiredWeapon;
-    [SerializeField] TMP_Text scrapsRequiredWeapon;
+    [SerializeField] TMP_Text scrapsRequiredWeapon; 
     [SerializeField] TMP_Text ironRequiredArmor;
     [SerializeField] TMP_Text leatherRequiredArmor;
     [SerializeField] TMP_Text scrapsRequiredArmor;
+
+    [SerializeField] Button upgradeWeaponButton;
+    [SerializeField] Button upgradeArmorButton;
+
+    int ironHeld, scrapHeld, leatherHeld;
+    int ironRequiredForWeapon, scrapRequiredForWeapon, ironRequiredForArmor, leatherRequiredForArmor, scrapRequiredForArmor;
 
     private void OnEnable()
     {
@@ -30,12 +37,20 @@ public class UpgradePanel : MonoBehaviour
 
         //check if max level already
 
-        ironRequiredWeapon.text = upgradeMaterialIRONWeapon[heroManager.weaponLevel].ToString();
-        scrapsRequiredWeapon.text = upgradeMaterialSCRAP[heroManager.weaponLevel].ToString();
 
-        ironRequiredArmor.text = upgradeMaterialIRON[heroManager.armorLevel].ToString();
-        leatherRequiredArmor.text = upgradeMaterialLEATHER[heroManager.armorLevel].ToString();
-        scrapsRequiredArmor.text = upgradeMaterialSCRAP[heroManager.armorLevel].ToString();
+        ironRequiredForWeapon = upgradeMaterialIRONWeapon[heroManager.weaponLevel];
+        scrapRequiredForWeapon = upgradeMaterialSCRAP[heroManager.weaponLevel];
+
+        ironRequiredWeapon.text = ironRequiredForWeapon.ToString();
+        scrapsRequiredWeapon.text = scrapRequiredForWeapon.ToString();
+
+        ironRequiredForArmor = upgradeMaterialIRON[heroManager.armorLevel];
+        leatherRequiredForArmor = upgradeMaterialLEATHER[heroManager.armorLevel];
+        scrapRequiredForArmor = upgradeMaterialSCRAP[heroManager.armorLevel];
+
+        ironRequiredArmor.text = ironRequiredForArmor.ToString();
+        leatherRequiredArmor.text = leatherRequiredForArmor.ToString();
+        scrapsRequiredArmor.text = scrapRequiredForArmor.ToString();
 
 
 
@@ -44,9 +59,34 @@ public class UpgradePanel : MonoBehaviour
 
     public void CheckIfUpgradeIsAvailable() {
 
-        if (heroManager.armorLevel == 3) {
+        ironHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Iron").Count;
+        scrapHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Scraps").Count;
+        leatherHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Leather").Count;
+        if (ironHeld >= ironRequiredForWeapon && scrapHeld >= scrapRequiredForWeapon) {
 
+            WeaponUpgradeAvailable(true);
+        } else {
+            WeaponUpgradeAvailable(false);
         }
+
+        if (leatherHeld >= leatherRequiredForArmor && ironHeld >= ironRequiredForArmor && scrapHeld >= scrapRequiredForArmor) {
+            ArmorUpgradeAvailable(true);
+        }
+        else {
+            ArmorUpgradeAvailable(false);
+        }
+    }
+
+    private void WeaponUpgradeAvailable(bool available) {
+        // enable upgrade button
+        upgradeWeaponButton.interactable = available;
+    }
+
+    private void ArmorUpgradeAvailable(bool available)
+    {
+        // enable upgrade button
+        upgradeArmorButton.interactable = available;
+
     }
 
     public void UpgradeWeapon() {
@@ -57,7 +97,7 @@ public class UpgradePanel : MonoBehaviour
     public void UpgradeArmor() {
 
         heroManager.armorLevel++;
-        UpdateUI()
+        UpdateUI();
     }
 
 
