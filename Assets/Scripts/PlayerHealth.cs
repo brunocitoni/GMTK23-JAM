@@ -7,6 +7,9 @@ public class PlayerHealth : Health
 {
     public Slider healthbarUISlider;
 
+    public delegate void PlayerDeath();
+    public static event PlayerDeath OnPlayerDeath;
+
     public override void Start()
     {
         base.Start();
@@ -35,6 +38,10 @@ public class PlayerHealth : Health
         {
             healthbarUISlider.value = currentHealth;
             healthbarUISlider.maxValue = maxHealth;
+        }
+
+        if (currentHealth <= 0) {
+            OnPlayerDeath?.Invoke();
         }
 
         return ret;

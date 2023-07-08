@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     public delegate void NewGameDelegate();
     public static NewGameDelegate OnNewGame; // Event to be invoked on death
 
-    [SerializeField] string gameSceneName;
+
+    public delegate void GameOverDelegate();
+    public static GameOverDelegate OnGameOver; // Event to be invoked on death
+
+    public static int score;
 
     public static GameManager instance;
 
@@ -30,21 +34,34 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerHealth.OnPlayerDeath += TriggerGameOver;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void OnDestroy()
     {
-        
+        PlayerHealth.OnPlayerDeath -= TriggerGameOver;
+        PlayerPrefs.SetInt("restart", 0);
+        PlayerPrefs.Save();
+    }
+
+    public void TriggerGameOver() {
+        GameObject.FindGameObjectWithTag("Hero").SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").SetActive(false);
+        foreach (var obj in GameObject.FindGameObjectsWithTag("Enemy")) {
+            obj.SetActive(false);
+        }
+        OnGameOver?.Invoke();
     }
 
     public void OnClickNewGame() {
+        OnNewGame?.Invoke();
+    }
 
-        //OnNewGame?.Invoke();
-
-        // load game scene
-        SceneManager.LoadScene(gameSceneName);
+    public void OnClickRestart() {
+        PlayerPrefs.SetInt("restart", 1);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

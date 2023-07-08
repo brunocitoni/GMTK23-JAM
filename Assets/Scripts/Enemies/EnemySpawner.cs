@@ -8,11 +8,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int timeBetweenSpawns = 10;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Timer spawnerTimer;
+    [SerializeField] List<GameObject> spawnLocations = new(); 
     public List<EnemySO> spawnableEnemies = new();
     public int currentNumberOfEnemiesSpawned;
 
-    private void Start()
+    public void Start()
     {
+        GameManager.OnNewGame += OnNewGame;
+    }
+
+    private void OnNewGame()
+    {
+        GameManager.OnGameOver += StopSpawning;
         WaveManager.OnWaveStart += StartSpawning;
         spawnerTimer.TimerElapsed += StartSpawning;
         spawnerTimer.SetDuration(timeBetweenSpawns);
@@ -23,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnerTimer.TimerElapsed -= StartSpawning;
         WaveManager.OnWaveStart -= StartSpawning;
+        GameManager.OnGameOver -= StopSpawning;
     }
 
     public void StartSpawning()
@@ -30,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Spawning an enemy at " + this.transform.position);
 
         var newEnemy = Instantiate(enemyPrefab, this.transform);
-        newEnemy.transform.position = this.transform.position;
+        newEnemy.transform.position = spawnLocations[Random.Range(0,spawnLocations.Count)].transform.position;
         newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)]; // assign a random enemy to this specific enemy
         currentNumberOfEnemiesSpawned++;
 
