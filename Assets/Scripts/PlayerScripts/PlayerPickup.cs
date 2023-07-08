@@ -19,16 +19,18 @@ public class PlayerPickup : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag == "Item")
         {
             ItemSO item = coll.GetComponent<Item>().thisItem;
-            if(item != null){
+            if (item != null)
+            {
                 pI.AddItemToInventory(item);
                 Destroy(coll.gameObject);
             }
-            
+
         }
     }
 

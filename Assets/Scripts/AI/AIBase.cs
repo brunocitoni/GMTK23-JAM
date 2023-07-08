@@ -39,12 +39,17 @@ public class AIBase : MonoBehaviour
     {
         currentState = AIStates.searching;
 
-        StartAttack.AddListener(() => attackTimer = attackCooldown);
+        StartAttack.AddListener(SetUpAttack);
 
         if(GetComponent<Health>() != null)
             GetComponent<Health>().OnThisDeath += TargetDied;
 
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void SetUpAttack()
+    {
+        attackTimer = attackCooldown;
     }
 
     void Update()

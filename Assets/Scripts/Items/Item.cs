@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     void Start()
     {
         name = thisItem.itemName;
-        this.GetComponent<Image>().sprite = thisItem.itemSprite;
+        this.GetComponent<SpriteRenderer>().sprite = thisItem.itemSprite;
     }
 
     // Update is called once per frame
@@ -18,14 +18,6 @@ public class Item : MonoBehaviour
     {
         
     }
-
-/*    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-    }*/
 }
 
 

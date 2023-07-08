@@ -12,15 +12,16 @@ public class EnemySO : ScriptableObject
 
     [Space(10) ,Header("EnemyAI")]
     [Header("Persueing"), Tooltip("This multiplied with the weaponrange is where the person actually stops")]
-    public float weaponRangeTolerance = 0.75f;
-    public float moveSpeed = 5;
+    public float weaponRangeTolerance = 0.6f;
+    public float moveSpeed = 3;
+    public float alliesEvasionRadius = 3;
 
     [Header("Atacking")]
-    public float attackduration;
+    public float attackduration = 0.2f;
     [Tooltip("The time it takes for this person to be ready to attack again in seconds")]
     public float attackCooldown = 1;
     [Tooltip("The distance from the enemy at which the person stops and attacks")]
-    public float attackStopDistance = 0.5f;
+    public float attackStopDistance = 0.3f;
     [Tooltip("The distance the person moves back when the attack started too close")]
     public float personalSpace = 1;
 }

@@ -19,9 +19,10 @@ MonoBehaviour:
   drops:
   - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
   - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
-  weaponRangeTolerance: 0.75
-  moveSpeed: 5
-  attackduration: 0
+  weaponRangeTolerance: 0.6
+  moveSpeed: 3
+  alliesEvasionRadius: 3
+  attackduration: 0.2
   attackCooldown: 1
-  attackStopDistance: 0.5
+  attackStopDistance: 0.3
   personalSpace: 1

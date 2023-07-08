@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         hasDied = false;
         SetHealth(maxHealth);
 
-        spriteMaterial = GetComponent<SpriteRenderer>().material;
+        spriteMaterial = GetComponentInChildren<SpriteRenderer>().material;
     }
 
     public void OnDestroy()
