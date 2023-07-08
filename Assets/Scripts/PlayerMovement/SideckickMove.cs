@@ -12,11 +12,17 @@ public class SideckickMove : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 playerDirection;
     private static float t = 0.0f;
+    private float lastDirection = 0;
+
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerspeed = walkspeed;    
+        playerspeed = walkspeed;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,6 +36,7 @@ public class SideckickMove : MonoBehaviour
         float directionX = Input.GetAxisRaw("Horizontal");
         float directionY = Input.GetAxisRaw("Vertical");
         playerDirection = new Vector2(directionX,directionY).normalized;
+
         if(Input.GetButton("Fire3")){
             //playerspeed = runspeed;
             playerspeed = Mathf.Lerp(walkspeed,runspeed,t);
@@ -41,7 +48,22 @@ public class SideckickMove : MonoBehaviour
             t -= 2*Time.deltaTime;
             t = Mathf.Clamp(t,0,1);
         }
-        
+
+        //Animation
+        if (playerDirection.magnitude < 0.5f)
+        {
+            animator.SetFloat("XMove", 0);
+        }
+        else if(Mathf.Abs(playerDirection.x) > 0.3f)
+        {
+            lastDirection = playerDirection.x;
+            animator.SetFloat("XMove", playerDirection.x);
+        }
+        else
+        {
+            animator.SetFloat("XMove", lastDirection);
+        }
+
     }
     void FixedUpdate()
     {

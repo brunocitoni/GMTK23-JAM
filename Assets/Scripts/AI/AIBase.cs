@@ -164,12 +164,17 @@ public class AIBase : MonoBehaviour
         if (!attacking)
         {
             //Cancel Attacking State if target moves to far away
-            if (Vector2.Distance(transform.position, target.transform.position) > heldWeapon.range)
+            try //Removing an error that is called that doesn't cause any problems
             {
-                currentState = AIStates.persueing;
-                StartPersue.Invoke();
-                return;
+                if (Vector2.Distance(transform.position, target.transform.position) > heldWeapon.range)
+                {
+                    currentState = AIStates.persueing;
+                    StartPersue.Invoke();
+                    return;
+                }
             }
+            catch { }
+            
 
             //Start Attack
             if(attackTimer <= 0)
