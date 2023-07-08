@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
         maxHealth = health;
     }
 
-    public void ModifyHealth(int change)
+    public bool ModifyHealth(int change)
     {
         currentHealth += change;
         // clamp
@@ -46,7 +46,10 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0) {
             OnDeath();
+            return true;
         }
+
+        return false;
     }
 
     IEnumerator HitFlash()

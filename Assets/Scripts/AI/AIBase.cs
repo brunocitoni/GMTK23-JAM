@@ -42,7 +42,7 @@ public class AIBase : MonoBehaviour
         StartAttack.AddListener(SetUpAttack);
 
         if(GetComponent<Health>() != null)
-            GetComponent<Health>().OnThisDeath += TargetDied;
+            GetComponent<Health>().OnThisDeath += OnDeath;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -77,6 +77,8 @@ public class AIBase : MonoBehaviour
 
             case AIStates.avoiding_damage:
                 AvoidingDamage();
+                break;
+            case AIStates.dead:
                 break;
         }
     }
@@ -183,6 +185,14 @@ public class AIBase : MonoBehaviour
             timer -= Time.deltaTime;
             transform.position = Vector2.Lerp(transform.position, target.transform.position, heldWeapon.attackMoveSpeed * Time.deltaTime);
             yield return null;
+
+            //If the target died
+            if(target == null)
+            {
+                attacking = false;
+                attackTimer = attackCooldown;
+                yield break;
+            }
         }
 
         //Attack
@@ -193,7 +203,14 @@ public class AIBase : MonoBehaviour
             Health h = target.GetComponent<Health>();
             if(h != null)
             {
-                h.ModifyHealth(-heldWeapon.damage);
+                if (h.ModifyHealth(-heldWeapon.damage))
+                {
+                    target = null;
+                    attacking = false;
+                    attackTimer = attackCooldown;
+                    yield break;
+                }
+
             }
             else
             {
@@ -229,23 +246,20 @@ public class AIBase : MonoBehaviour
         targetAI.attackers.Remove(gameObject);
     }
 
-    void TargetDied()
+    void OnDeath()
     {
         if (attacking)
         {
             if(target != null)
                 target.GetComponent<AIBase>().attackers.Remove(gameObject);
-                attackers.Remove(target);
         }
 
-        target = null;
-        currentState = AIStates.searching;
-        StartSearch.Invoke();
+        currentState = AIStates.dead;
     }
 
     private void OnDestroy()
     {
-        GetComponent<Health>().OnThisDeath -= TargetDied;
+        GetComponent<Health>().OnThisDeath -= OnDeath;
     }
 
     public virtual void AvoidingDamage()
@@ -260,6 +274,7 @@ public class AIBase : MonoBehaviour
         searching,
         persueing,
         attacking,
-        avoiding_damage
+        avoiding_damage,
+        dead
     }
 }
