@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -335509513943562220}
   - component: {fileID: 5230530845458579511}
   - component: {fileID: 5839393619883851711}
+  - component: {fileID: 2116841252002767685}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -152,3 +153,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   hasDied: 0
+--- !u!114 &2116841252002767685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728163926067688090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be2926759f0fe346901f86d0bd2a007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  target: {fileID: 0}
+  targetPosition: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
+  heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
+  weaponRangeTolerance: 0.75
+  movespeed: 5
+  alliesEvasionRadius: 3
+  attackduration: 0
+  attackCooldown: 1
+  attackStopDistance: 0.5
+  personalSpace: 1
+  StartSearch:
+    m_PersistentCalls:
+      m_Calls: []
+  StartPersue:
+    m_PersistentCalls:
+      m_Calls: []
+  StartAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  StartAvoiding:
+    m_PersistentCalls:
+      m_Calls: []
