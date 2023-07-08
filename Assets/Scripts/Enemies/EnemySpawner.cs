@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
         spawnerTimer.TimerElapsed += SpawnEnemy;
         spawnerTimer.SetDuration(timeBetweenSpawns);
         spawnerTimer.RestartTimer();
+        SpawnEnemy(); // debug
     }
 
     private void OnDestroy()

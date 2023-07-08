@@ -18,10 +18,9 @@ public class Enemy : MonoBehaviour
         this.GetComponent<SpriteRenderer>().sprite = thisEnemy.enemySprite;
 
         // get a reference to the itemSpawner
-        //itemSpawner = GameObject.Find("ItemSpawner").GetComponent<ItemSpawner>();
+        itemSpawner = GameObject.Find("ItemSpawner").GetComponent<ItemSpawner>();
 
         // assign a health script to this enemy
-        //healthScript = this.gameObject.AddComponent<Health>();
         healthScript = this.GetComponent<Health>();
         healthScript.SetHealth(thisEnemy.enemyMaxHealth);
         healthScript.OnThisDeath += Die;
@@ -41,10 +40,11 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
 
         // drop item
-        //itemSpawner.InstantiateItem(thisEnemy.drops[Random.Range(0, thisEnemy.drops.Count)], this.transform);
+        itemSpawner.InstantiateItem(thisEnemy.drops[Random.Range(0, thisEnemy.drops.Count)], this.transform);
 
+        Debug.Log("Destroyinh enemy " + thisEnemy.enemyName);
         // delete this gameobject
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
 }

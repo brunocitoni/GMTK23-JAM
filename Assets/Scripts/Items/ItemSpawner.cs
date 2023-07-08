@@ -28,7 +28,7 @@ public class ItemSpawner : MonoBehaviour
     // Update is called once per frame
     public void InstantiateItem(ItemSO itemToInstantiate, Transform spawnTransform)
     {
-        var newItem = Instantiate(itemPrefab, spawnTransform);
+        var newItem = Instantiate(itemPrefab, this.transform);
         newItem.transform.position = spawnTransform.position;
         newItem.GetComponent<Item>().thisItem = itemToInstantiate; // assign a random enemy to this specific enemy
     }
