@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class EndWavePanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        Debug.Log("EndWave Panel awake");
+        WaveManager.OnWaveComplete += DisplayPanel;
+        this.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void DisplayPanel() {
+
+        this.gameObject.SetActive(true);
+    }
+
+    public void OnClickRest() {
+        // todo add functionality
+        Debug.Log("Resting...");
+        // invoke new wave start
+        InvokeNewWaveStart();
+
+    }
+
+    public void OnClickCraft() {
+
+        //todo
+        Debug.Log("Crafting...");
+        // invoke new wave start
+        InvokeNewWaveStart();
+    }
+
+    public void OnClickUpgrade() {
+        //todo
+        Debug.Log("Upgrading...");
+        // invoke new wave start
+        InvokeNewWaveStart();
+    }
+
+    private void InvokeNewWaveStart() {
+        this.gameObject.SetActive(false);
+        WaveManager.InvokeWaveStart();
     }
 }

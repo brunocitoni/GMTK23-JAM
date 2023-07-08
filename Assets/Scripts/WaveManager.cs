@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : SerializedMonoBehaviour
 {
-    [SerializeField] Timer waveTimer;
-    [SerializeField] int waveLenghtInSeconds;
+    public static Timer waveTimer;
+    public static int waveLenghtInSeconds;
     EnemySpawner enemySpawner;
     public static bool isWaveOngoing = false;
 
     // events
     public delegate void WaveComplete();
     public static event WaveComplete OnWaveComplete;
+
+    public delegate void WaveStarting();
+    public static event WaveStarting OnWaveStart;
 
     private void Start()
     {
@@ -22,7 +26,7 @@ public class WaveManager : MonoBehaviour
         waveTimer.TimerElapsed += EndWave;
         waveTimer.SetDuration(waveLenghtInSeconds);
         waveTimer.display = true;
-        StartWave();
+        InvokeWaveStart();
     }
 
     private void OnDestroy()
@@ -30,9 +34,9 @@ public class WaveManager : MonoBehaviour
         waveTimer.TimerElapsed -= EndWave;
     }
 
-    private void StartWave()
+    public static void StartWave()
     {
-        // start the wave ti
+        // start the wave timer
         waveTimer.SetDuration(waveLenghtInSeconds);
         waveTimer.RestartTimer();
         Debug.Log("Wave has started");
@@ -57,5 +61,11 @@ public class WaveManager : MonoBehaviour
     public static void InvokeWaveComplete() {
         Debug.Log("Wave complete! Invoking the OnWaveComplete event");
         OnWaveComplete?.Invoke();
+    }
+
+    public static void InvokeWaveStart() {
+        Debug.Log("A new wave start has been invoked");
+        OnWaveStart?.Invoke();
+        StartWave();
     }
 }

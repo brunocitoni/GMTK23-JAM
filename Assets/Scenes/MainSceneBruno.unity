@@ -134,13 +134,14 @@ GameObject:
   - component: {fileID: 30982008}
   - component: {fileID: 30982010}
   - component: {fileID: 30982009}
+  - component: {fileID: 30982011}
   m_Layer: 5
   m_Name: EndWavePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &30982008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -201,6 +202,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30982007}
   m_CullTransparentMesh: 1
+--- !u!114 &30982011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30982007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7673e1979173648289851c55b93119b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487999763
 GameObject:
   m_ObjectHideFlags: 0

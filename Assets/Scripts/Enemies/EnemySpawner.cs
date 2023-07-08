@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        WaveManager.OnWaveStart += StartSpawning;
         spawnerTimer.TimerElapsed += StartSpawning;
         spawnerTimer.SetDuration(timeBetweenSpawns);
         StartSpawning();
@@ -21,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private void OnDestroy()
     {
         spawnerTimer.TimerElapsed -= StartSpawning;
+        WaveManager.OnWaveStart -= StartSpawning;
     }
 
     public void StartSpawning()
