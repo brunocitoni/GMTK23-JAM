@@ -29,7 +29,6 @@ public class AIBase : MonoBehaviour
     [Tooltip("The distance the person moves back when the attack started too close")]
     public float personalSpace = 1;
     bool attacking = false;
-    List<GameObject> attackers = new List<GameObject>();
 
 
     [HideInInspector]
@@ -159,7 +158,7 @@ public class AIBase : MonoBehaviour
             }
 
             //Start Attack
-            if(attackTimer <= 0 && attackers.Count == 0)
+            if(attackTimer <= 0)
             {
                 StartCoroutine(Attack());
             }
@@ -198,7 +197,6 @@ public class AIBase : MonoBehaviour
         //Attack
         if (Vector2.Distance(transform.position, target.transform.position) < heldWeapon.weaponLength)
         {
-            targetAI.attackers.Add(gameObject);
 
             Health h = target.GetComponent<Health>();
             if(h != null)
@@ -243,17 +241,10 @@ public class AIBase : MonoBehaviour
         attacking = false;
         attackTimer = attackCooldown;
 
-        targetAI.attackers.Remove(gameObject);
     }
 
     void OnDeath()
     {
-        if (attacking)
-        {
-            if(target != null)
-                target.GetComponent<AIBase>().attackers.Remove(gameObject);
-        }
-
         currentState = AIStates.dead;
     }
 
