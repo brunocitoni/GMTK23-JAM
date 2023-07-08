@@ -10,6 +10,9 @@ public class HeroManager : MonoBehaviour
     public static bool attackBuffActive = false;
     public static bool defenceBuffActive = false;
 
+    public int armorLevel = 0;
+    public int weaponLevel = 0;
+
     private void Start()
     {
         PlayerInventory.OnHealthPotionGiven += HealthPotion;

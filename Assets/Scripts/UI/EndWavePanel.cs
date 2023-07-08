@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EndWavePanel : MonoBehaviour
 {
+
+    [SerializeField] GameObject upgradePanel;
+
     private void Awake()
     {
         Debug.Log("EndWave Panel awake");
@@ -31,11 +34,17 @@ public class EndWavePanel : MonoBehaviour
 
     }
 
-    public void OnClickCraft() {
+    public void OnClickUpgrade() {
         //todo
-        Debug.Log("Crafting...");
+        Debug.Log("Upgrading...");
+
+        // set this off
+        this.gameObject.SetActive(false);
+        // toggle upgrade panel
+        upgradePanel.SetActive(true);
+
         // invoke new wave start
-        InvokeNewWaveStart();
+        //InvokeNewWaveStart();
     }
 
     private void InvokeNewWaveStart() {
