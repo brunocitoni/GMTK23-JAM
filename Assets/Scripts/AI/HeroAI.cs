@@ -14,6 +14,12 @@ public class HeroAI : AIBase
         WaveManager.OnWaveStart += StartBattle;
     }
 
+    public void OnDestroy()
+    {
+        WaveManager.OnWaveComplete -= ExitBattle;
+        WaveManager.OnWaveStart -= StartBattle;
+    }
+
     public override void Searching()
     {
         //Select closest enemy
