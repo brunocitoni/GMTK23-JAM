@@ -10,4 +10,6 @@ public static class Data
     public static int atkPotionBuff = 1;
     public static int defPotionDuration = 10;
     public static int defPotionBuff = 1;
+    public static int healOnRestHero = 100;
+    public static int healOnRestPlayer = 100;
 }

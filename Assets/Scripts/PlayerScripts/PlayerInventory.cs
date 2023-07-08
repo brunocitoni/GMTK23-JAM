@@ -38,7 +38,6 @@ public class PlayerInventory : MonoBehaviour
         itemsHeld.Remove(itemToDrop);
         inventorySlot.SetEmpty();
         inv_UI.Setup();
-
     }
 
     public void GiveItemToHero(Slot_UI inventorySlot, ItemSO itemToThrow)
