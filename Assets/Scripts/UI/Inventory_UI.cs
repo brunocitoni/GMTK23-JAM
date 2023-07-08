@@ -23,6 +23,7 @@ public class Inventory_UI : MonoBehaviour
             ToggleInventory();    
         }
     }
+
     public void ToggleInventory()
     {
         Setup();

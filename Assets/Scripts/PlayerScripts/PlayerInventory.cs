@@ -13,9 +13,33 @@ public class PlayerInventory : MonoBehaviour
         inv_UI.Setup();
     }
 
-    public void ThrowItem(ItemSO itemToThrow)
+    public void DropItem(Slot_UI inventorySlot, ItemSO itemToDrop)
+    {
+        itemsHeld.Remove(itemToDrop);
+        inventorySlot.SetEmpty();
+        inv_UI.Setup();
+
+    }
+
+    public void GiveItemToHero(Slot_UI inventorySlot, ItemSO itemToThrow)
     {
         itemsHeld.Remove(itemToThrow);
+        inventorySlot.SetEmpty();
+        inv_UI.Setup();
+        ApplyEffect(itemToThrow);
         // todo hero needs to receive it
+    }
+
+    public void ApplyEffect(ItemSO itemGiven)
+    {
+        //todo
+        switch (itemGiven.itemName)
+        {
+
+            case "HealthPotion":
+                break;
+
+        }
+
     }
 }

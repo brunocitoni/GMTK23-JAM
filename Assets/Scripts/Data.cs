@@ -5,5 +5,5 @@ using UnityEngine;
 public static class Data
 {
     public static int heroMaxHealth = 1000;
-    public static int waveLenghtInSeconds = 10;
+    public static int waveLenghtInSeconds = 100;
 }
