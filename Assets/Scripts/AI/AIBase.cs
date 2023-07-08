@@ -155,6 +155,12 @@ public class AIBase : MonoBehaviour
     {
         moveDirection = Vector2.zero;
 
+        if (target == null)
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
+
         if (!attacking)
         {
             //Cancel Attacking State if target moves to far away
@@ -174,11 +180,6 @@ public class AIBase : MonoBehaviour
             return;
         }
 
-        if (target == null)
-        {
-            currentState = AIStates.searching;
-            StartSearch.Invoke();
-        }
     }
 
     IEnumerator Attack()
