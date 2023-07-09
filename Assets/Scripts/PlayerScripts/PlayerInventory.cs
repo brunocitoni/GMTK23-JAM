@@ -16,6 +16,7 @@ public class PlayerInventory : MonoBehaviour
     public static int itemsCrafted = 0;
 
     public CraftingTable craft;
+    public CraftingPanel_UI craftingPanelUI;
 
     public delegate void HealthPotion();
     public static event HealthPotion OnHealthPotionGiven;
@@ -34,6 +35,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void RefreshUI() {
         inv_UI.Setup();
+        craftingPanelUI.Setup();
     }
 
     public void AddItemToInventory(ItemSO itemToAdd)

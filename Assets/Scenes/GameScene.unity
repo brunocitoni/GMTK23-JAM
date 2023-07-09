@@ -687,6 +687,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1399893175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1010964403103468344, guid: 68d2894172b7280478ddcfc0792e39a8, type: 3}
+  m_PrefabInstance: {fileID: 1680382899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194c9b1f600d9314d8b081ff24031a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1444371239
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +831,10 @@ PrefabInstance:
       propertyPath: inv_UI
       value: 
       objectReference: {fileID: 1680382900}
+    - target: {fileID: 8659486885800784033, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
+      propertyPath: craftingPanelUI
+      value: 
+      objectReference: {fileID: 1399893175}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
 --- !u!114 &1445637505 stripped
