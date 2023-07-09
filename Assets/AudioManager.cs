@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip battleMusic;
     public AudioClip restMusic;
     public AudioClip mainMenuMusic;
+    public static bool isMuted;
+    public Button muteButton;
 
     public GameObject defaultAudioPlayer;
 
@@ -70,6 +73,12 @@ public class AudioManager : MonoBehaviour
         source.clip = sounds;
         source.pitch *= 1 + Random.Range(pitchRange.x, pitchRange.y);
         source.Play();
+    }
+
+    public static void ToggleMute()
+    {
+        isMuted = !isMuted;
+        AudioListener.volume = isMuted ? 0 : 1;
     }
 }
 
