@@ -69,7 +69,14 @@ public class HeroAI : AIBase
         base.OutOfBattle();
         targetPosition = Vector2.zero;
 
-        moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+        if(Vector2.Distance(targetPosition, transform.position) < 0.1)
+        {
+            moveDirection = Vector2.zero;
+        }
+        else
+        {
+            moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+        }
     }
 
     public override void Dead()
