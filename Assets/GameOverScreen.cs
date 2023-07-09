@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -9,11 +10,13 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] TMP_Text wavesCompleted;
     [SerializeField] TMP_Text itemsCrafted;
     [SerializeField] TMP_Text potionsChugged;
-    [SerializeField] TMP_Text score;
+    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text highScoreText;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        Debug.Log("Death screen on enable");
         Populate();
     }
 
@@ -24,6 +27,33 @@ public class GameOverScreen : MonoBehaviour
         wavesCompleted.text = "Waves completed: " + WaveManager.waveCounter;
         itemsCrafted.text = "Items crafted: " + PlayerInventory.itemsCrafted; 
         potionsChugged.text = "Potions chugged: " + PlayerInventory.potionsDrank;
-        score.text = "Total score: " + (EnemySpawner.enemyKilled + WaveManager.waveCounter * 2 + PlayerInventory.itemsCrafted - PlayerInventory.potionsDrank)*10;
+
+        int score = (EnemySpawner.enemyKilled + (WaveManager.waveCounter * 2) + PlayerInventory.itemsCrafted - PlayerInventory.potionsDrank) * 10;
+        Debug.Log("Score is " + score);
+        scoreText.text = "Total score: " + score;
+
+        if (!PlayerPrefs.HasKey("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", 0);
+            PlayerPrefs.Save();
+        }
+
+        int loadedScore = PlayerPrefs.GetInt("highScore");
+        if (score > loadedScore)
+        {
+            PlayerPrefs.SetInt("highScore", score);
+            PlayerPrefs.Save();
+            highScoreText.text = "New high score: " + score.ToString();
+        }
+        else
+        {
+            highScoreText.text = "High score is " + loadedScore.ToString();
+        }
+
+        // reset here in case player is restarting
+        EnemySpawner.enemyKilled = 0;
+        WaveManager.waveCounter = 0;
+        PlayerInventory.itemsCrafted = 0;
+        PlayerInventory.potionsDrank = 0;
     }
 }
