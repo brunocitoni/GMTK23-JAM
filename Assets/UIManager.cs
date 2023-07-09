@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject waveText;
     [SerializeField] GameObject endWavePanel;
     [SerializeField] GameObject atkBuffIcon;

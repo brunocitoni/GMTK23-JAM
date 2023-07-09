@@ -43,8 +43,7 @@ public class CraftingPanel_UI : MonoBehaviour
             craftingPanel.SetActive(false);
         }
     }
-
-    
+        
     public void Setup()
     {   
         List<RecipeSO> craftable = pInventory.craftableItems(pInventory.itemsHeld); 
