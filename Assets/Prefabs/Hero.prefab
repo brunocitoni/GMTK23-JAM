@@ -112,10 +112,10 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   heldWeapon: {fileID: 11400000, guid: a9c880cc9279dc640866a16c10c44768, type: 2}
   weaponRangeTolerance: 0.6
-  movespeed: 5
+  movespeed: 10
   alliesEvasionRadius: 3
   attackduration: 0.2
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackStopDistance: 0.3
   personalSpace: 1
   weaponeffect: {fileID: 111627019712539879}
@@ -362,8 +362,8 @@ Transform:
   m_GameObject: {fileID: 3472160663985937986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.33, y: 1.33, z: 1.33}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4320274883505651472}
   - {fileID: 1197507822628824611}

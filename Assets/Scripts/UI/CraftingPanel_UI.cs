@@ -28,6 +28,15 @@ public class CraftingPanel_UI : MonoBehaviour
         {
             craftingPanel.SetActive(false);    
         }
+
+        /*if (cTableScript.canCraft)
+        {
+            ToggleCraftingPanel();
+        }
+        if (!cTableScript.canCraft)
+        {
+            craftingPanel.SetActive(false);
+        }*/
         //fix alternance si on va sur craft avec inventaire ouvert
     }
 
