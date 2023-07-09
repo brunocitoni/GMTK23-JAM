@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Data
 {
     public static int heroMaxHealth = 250;
+    public static int playerMaxHealth = 50;
 
     public static int waveLenghtInSeconds = 25 +1; // seconds
     public static float spawnDelay = 5;

@@ -15,7 +15,7 @@ public class PlayerHealth : Health
         base.Start();
 
         healthbarUISlider = GameObject.Find("PlayerHealthSlider").GetComponent<Slider>();
-        SetHealth(maxHealth);
+        SetHealth(Data.playerMaxHealth);
 
     }
 
