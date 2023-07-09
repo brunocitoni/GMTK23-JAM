@@ -35,6 +35,7 @@ public class RecipeSlot_UI : MonoBehaviour
 
     void OnClick()
     {
+        Debug.Log(thisItem + "was attempted to be crafted");
         plInv.CraftItem(thisItem,thisListRecipe);
         cpUI.Setup();
     }

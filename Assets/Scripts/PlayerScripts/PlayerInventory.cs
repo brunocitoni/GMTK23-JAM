@@ -13,6 +13,8 @@ public class PlayerInventory : MonoBehaviour
 
     public static int potionsDrank = 0;
 
+    public static int itemsCrafted = 0;
+
     public CraftingTable craft;
 
     public delegate void HealthPotion();
@@ -63,13 +65,17 @@ public class PlayerInventory : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isPassingItem = false;
     }
+
     public void CraftItem(ItemSO item, List<ItemSO> listRecipe)
     {
        foreach (ItemSO ingredient in listRecipe)
        {
             itemsHeld.Remove(ingredient);
        }
-       AddItemToInventory(item);   
+       AddItemToInventory(item);
+        itemsCrafted++;
+
+
     }
 
     public List<RecipeSO> craftableItems(List<ItemSO> itemsHeld)
