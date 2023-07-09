@@ -9,7 +9,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Timer spawnerTimer;
     [SerializeField] List<GameObject> spawnLocations = new List<GameObject>();
     private GameManager gameManager;
-    public List<EnemySO> spawnableEnemies = new List<EnemySO>();
+    public List<EnemySO> spawnableEnemiesLv0 = new List<EnemySO>();
+    public List<EnemySO> spawnableEnemiesLv1 = new List<EnemySO>();
+    public List<EnemySO> spawnableEnemiesLv2 = new List<EnemySO>();
+    public List<EnemySO> spawnableEnemiesLv3 = new List<EnemySO>();
     public int currentNumberOfEnemiesSpawned;
     public static int enemyKilled = 0;
 
@@ -44,7 +47,27 @@ public class EnemySpawner : MonoBehaviour
 
         var newEnemy = Instantiate(enemyPrefab, this.gameObject.transform);
         newEnemy.transform.position = spawnLocations[Random.Range(0, spawnLocations.Count)].transform.position;
-        newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)];
+
+        if (WaveManager.waveCounter < 2)
+        {
+            newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv0[Random.Range(0, spawnableEnemiesLv0.Count)];
+        } else if (WaveManager.waveCounter > 2 && WaveManager.waveCounter < 6)
+        {
+            newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv1[Random.Range(0, spawnableEnemiesLv1.Count)];
+        }
+        else if (WaveManager.waveCounter > 6 && WaveManager.waveCounter < 10)
+        {
+            newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv2[Random.Range(0, spawnableEnemiesLv2.Count)];
+        }
+        else if (WaveManager.waveCounter > 10)
+        {
+            newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv2[Random.Range(0, spawnableEnemiesLv3.Count)];
+        }
+        else // should never happen
+        {
+            newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv1[Random.Range(0, spawnableEnemiesLv1.Count)];
+        }
+
         currentNumberOfEnemiesSpawned++;
 
         spawnerTimer.RestartTimer();

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Scoundrel
   enemySprite: {fileID: 21300000, guid: 7af5f1b9cb7fc7645a9f27f070fbe2fd, type: 3}
   enemyAtk: 10
-  enemyMaxHealth: 50
+  enemyMaxHealth: 75
   drops:
   - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
   - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject atkBuffIcon;
     [SerializeField] GameObject defBuffIcon;
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] TMP_Text waveCounterText;
 
     // Start is called before the first frame update
     void Awake()
@@ -70,5 +71,7 @@ public class UIManager : MonoBehaviour
         {
             defBuffIcon.SetActive(false);
         }
+
+        waveCounterText.text = (WaveManager.waveCounter + 1).ToString();
     }
 }

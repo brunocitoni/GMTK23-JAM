@@ -12,7 +12,7 @@ public class WaveManager : SerializedMonoBehaviour
     public static bool isWaveOngoing = false;
     public static bool waitingForNewWave = true;
     public static int waveCounter = 0;
-
+    
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject UICanvas;
 

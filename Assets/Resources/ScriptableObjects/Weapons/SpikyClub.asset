@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4761f6c543b8a94daed8ef3b4cb0f22, type: 3}
   m_Name: SpikyClub
   m_EditorClassIdentifier: 
-  damage: 5
-  range: 1
+  damage: 6
+  range: 2
   weaponLength: 1
   attackMoveSpeed: 4
