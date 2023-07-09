@@ -7,12 +7,15 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public Button resumeButton;
+    public Button quitButton;
 
 
     void Start()
     {
         resumeButton.onClick.RemoveAllListeners();
         resumeButton.onClick.AddListener(Resume);
+        quitButton.onClick.RemoveAllListeners();
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     // Update is called once per frame
