@@ -6,52 +6,23 @@ using UnityEngine.Audio;
 
 public class Settings : MonoBehaviour
 {
-    public Dropdown resolutiondrop;
     public AudioMixer audioMixer;
-    Resolution[] resolutions;
 
     void Start()
     {
-        resolutions = Screen.resolutions;
 
-        resolutiondrop.ClearOptions();
-
-        List<string> options = new List<string>();
-        int currentresolutionindex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentresolutionindex = i;
-            }
-        }
-
-        resolutiondrop.AddOptions(options);
-        resolutiondrop.value = currentresolutionindex;
-        resolutiondrop.RefreshShownValue();
     }
 
-    public void Setreso(int resolutionindex)
+
+    public void SFXVolume(float volume)
     {
-        Resolution res = resolutions[resolutionindex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        audioMixer.SetFloat("SFXVolume", volume);
     }
 
-    public void Volume(float volume)
+
+    public void MusicVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("MusicVolume", volume);
     }
 
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-    }
-
-    public void SetFullscreen(bool fullscreen)
-    {
-        Screen.fullScreen = fullscreen;
-    }
 }
