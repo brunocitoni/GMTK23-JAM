@@ -456,6 +456,8 @@ MonoBehaviour:
   attackStopDistance: 0.5
   personalSpace: 1
   weaponeffect: {fileID: 1127471826789726342}
+  slashSound: {fileID: 8300000, guid: cc8e92a39c3902343b3d3e211fe57565, type: 3}
+  slashMissSound: {fileID: 8300000, guid: 4c1c9731da75b704eb94299bbb8e5a57, type: 3}
   StartSearch:
     m_PersistentCalls:
       m_Calls: []
