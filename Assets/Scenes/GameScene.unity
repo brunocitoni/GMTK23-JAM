@@ -766,15 +766,15 @@ PrefabInstance:
     - target: {fileID: 8659486885800784033, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
       propertyPath: itemsHeld.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+      objectReference: {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
     - target: {fileID: 8659486885800784033, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
       propertyPath: itemsHeld.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+      objectReference: {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
     - target: {fileID: 8659486885800784033, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
       propertyPath: itemsHeld.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+      objectReference: {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
     - target: {fileID: 8659486885800784033, guid: 6fe291cafd57bba4f81267d352eaee3a, type: 3}
       propertyPath: itemsHeld.Array.data[4]
       value: 
