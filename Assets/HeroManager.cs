@@ -29,7 +29,6 @@ public class HeroManager : MonoBehaviour
         WaveManager.OnWaveComplete -= EndPotionBuffs;
     }
 
-
     private void HealthPotion() {
 
         Debug.Log("Resoving health potion");

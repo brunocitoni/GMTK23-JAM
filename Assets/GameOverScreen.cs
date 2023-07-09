@@ -12,6 +12,7 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] TMP_Text potionsChugged;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text highScoreText;
+    [SerializeField] TMP_Text trophyGiven;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -25,10 +26,11 @@ public class GameOverScreen : MonoBehaviour
     {
         enemiesKilled.text = "Enemies killed: " + EnemySpawner.enemyKilled;
         wavesCompleted.text = "Waves completed: " + WaveManager.waveCounter;
-        itemsCrafted.text = "Items crafted: " + PlayerInventory.itemsCrafted; 
+        itemsCrafted.text = "Items crafted: " + PlayerInventory.itemsCrafted;
+        trophyGiven.text = "Trophy given: " + PlayerInventory.trophiesGiven;
         potionsChugged.text = "Potions chugged: " + PlayerInventory.potionsDrank;
 
-        int score = (EnemySpawner.enemyKilled + (WaveManager.waveCounter * 2) + PlayerInventory.itemsCrafted - PlayerInventory.potionsDrank) * 10;
+        int score = (EnemySpawner.enemyKilled + (WaveManager.waveCounter * 2) + PlayerInventory.itemsCrafted - PlayerInventory.potionsDrank + (PlayerInventory.trophiesGiven*10)) * 10;
         Debug.Log("Score is " + score);
         scoreText.text = "Total score: " + score;
 
@@ -55,5 +57,6 @@ public class GameOverScreen : MonoBehaviour
         WaveManager.waveCounter = 0;
         PlayerInventory.itemsCrafted = 0;
         PlayerInventory.potionsDrank = 0;
+        PlayerInventory.trophiesGiven = 0;
     }
 }
