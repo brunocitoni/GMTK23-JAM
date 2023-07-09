@@ -26,9 +26,9 @@ MonoBehaviour:
   - 0.2
   equippedWeapon: {fileID: 11400000, guid: 8061a709a3a37421bb0cb0e603bd7519, type: 2}
   weaponRangeTolerance: 0.6
-  moveSpeed: 3
+  moveSpeed: 4
   alliesEvasionRadius: 3
   attackduration: 0.2
-  attackCooldown: 1.4
+  attackCooldown: 0.7
   attackStopDistance: 0.3
   personalSpace: 1

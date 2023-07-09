@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] int timeBetweenSpawns = 10;
+    [SerializeField] float timeBetweenSpawns;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Timer spawnerTimer;
     [SerializeField] List<GameObject> spawnLocations = new List<GameObject>();
@@ -23,13 +23,12 @@ public class EnemySpawner : MonoBehaviour
         WaveManager.OnWaveStart += WaveStarted;
         GameManager.OnGameOver += StopSpawning;
         spawnerTimer.TimerElapsed += StartSpawning;
-
-        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void WaveStarted()
     {
-        spawnerTimer.SetDuration(timeBetweenSpawns);
+        timeBetweenSpawns = Data.spawnDelay; // only to check in the inspector, not used
+        spawnerTimer.SetDuration(Data.spawnDelay);
         StartSpawning();
     }
 
@@ -77,10 +76,5 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Stopping the spawning");
         spawnerTimer.StopTimer();
-
-        /*if (GameObject.FindGameObjectWithTag("Hero").GetComponent<Health>().currentHealth <= 0)
-        {
-            gameManager.TriggerGameOver();
-        }*/
     }
 }

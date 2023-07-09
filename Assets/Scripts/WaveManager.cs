@@ -84,6 +84,7 @@ public class WaveManager : SerializedMonoBehaviour
         // add to wave timer, and make enemies spawn quicker
         Data.waveLenghtInSeconds = Data.waveLenghtInSeconds + waveCounter;
         Data.spawnDelay = Data.spawnDelay - waveCounter / 5;
+        Data.spawnDelay = Mathf.Clamp(Data.spawnDelay, 0.25f, 10);
 
         // destroy all objects left lying around
         UtilityFunctions.DestroyAllChildren(GameObject.Find("ItemSpawner"));

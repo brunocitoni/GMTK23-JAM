@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 5
   range: 2
   weaponLength: 0.75
-  attackMoveSpeed: 4
+  attackMoveSpeed: 6

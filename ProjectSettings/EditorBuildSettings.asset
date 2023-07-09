@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameSceneBruno.unity
     guid: 446cbfc4bcd9140c5886f93663c6a403
-  - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: d3f140ff94b934894b3885b42c24bcc7
   m_configObjects: {}
