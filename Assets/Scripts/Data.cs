@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Data
 {
     public static int heroMaxHealth = 100;
-    public static int waveLenghtInSeconds = 3 +1; // seconds
+    public static int waveLenghtInSeconds = 10 +1; // seconds
     public static int atkPotionDuration = 10; // seconds
     public static int atkPotionBuff = 1; 
     public static int defPotionDuration = 10; // seconds

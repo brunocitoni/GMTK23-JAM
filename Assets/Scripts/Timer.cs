@@ -62,13 +62,8 @@ public class Timer : MonoBehaviour
 
     public void FormatAndDisplayTimer()
     {
-        /*// Convert timer to TimeSpan
-        TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
-
-        // Format the timer as seconds
-        string formattedTime = string.Format("{0:00}", timeSpan.Seconds);*/
         int timerInt = (int)timer;
-        // Update the timer text
+
         if (timerInt == 0)
         {
             if (this.gameObject.name == "UI Canvas Variant")

@@ -50,7 +50,8 @@ public class Enemy : MonoBehaviour
             float prob = Random.Range(0f, 1f);
             if (prob>chance)
             {
-                 itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
+                itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
+                break;
             }
         }
 
