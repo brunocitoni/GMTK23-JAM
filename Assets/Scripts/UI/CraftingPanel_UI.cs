@@ -66,6 +66,7 @@ public class CraftingPanel_UI : MonoBehaviour
     {   
         List<RecipeSO> craftable = pInventory.craftableItems(pInventory.itemsHeld); 
         Debug.Log(craftable.Count);
+        Debug.Log(rslots.Count);
         for(int i=0; i<rslots.Count; i++)
         {
             if(i<craftable.Count)
@@ -75,6 +76,7 @@ public class CraftingPanel_UI : MonoBehaviour
             else
             {
                 rslots[i].SetEmpty();
+                Debug.Log("Slot"+ i+ "setempty");
             }
         }
     }

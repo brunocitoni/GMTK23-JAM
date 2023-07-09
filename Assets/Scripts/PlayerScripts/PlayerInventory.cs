@@ -104,6 +104,9 @@ public class PlayerInventory : MonoBehaviour
             if(iscraftable){
                 craftable.Add(recipe);
             }
+            else{
+                Debug.Log("Cant craft"+recipe.recipeName);
+            }
         }
         return craftable;
     }
