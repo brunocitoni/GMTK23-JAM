@@ -36,9 +36,10 @@ public class Inventory_UI : MonoBehaviour
         }
         else
         {
-            if(!cTableScript.canCraft){
+            /*if(!cTableScript.canCraft){
                 inventoryPanel.SetActive(false);
-            }
+            }*/
+            inventoryPanel.SetActive(false);
         }
     }
 
