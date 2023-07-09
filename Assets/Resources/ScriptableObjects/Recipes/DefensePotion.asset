@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 235826a6306a8c14aa3b66f6d96649f8, type: 3}
-  m_Name: aPot
+  m_Name: DefensePotion
   m_EditorClassIdentifier: 
-  recipeName: aPot
-  recipeResult: {fileID: 11400000, guid: b2d07066032d41a4091ededa3411c05c, type: 2}
-  requiredIngredients:
-  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
-  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
-  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
+  recipeName: DefensePotion
+  recipeResult: {fileID: 0}
+  requiredIngredients: []

@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 235826a6306a8c14aa3b66f6d96649f8, type: 3}
-  m_Name: hPot
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  recipeName: hPot
-  recipeResult: {fileID: 11400000, guid: 902a0fa08d2021c4f90fcd02a8782556, type: 2}
-  requiredIngredients:
-  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
-  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
-  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
+  recipeName: 
+  recipeResult: {fileID: 0}
+  requiredIngredients: []
