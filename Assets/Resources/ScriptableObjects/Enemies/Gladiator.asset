@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gladiator
   m_EditorClassIdentifier: 
   enemyName: Gladiator
-  enemySprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  enemySprite: {fileID: 21300000, guid: f09877e6989ab23409dacc2c2e8ca4e2, type: 3}
   enemyAtk: 10
   enemyMaxHealth: 250
   drops:

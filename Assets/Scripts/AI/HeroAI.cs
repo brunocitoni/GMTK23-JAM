@@ -89,13 +89,20 @@ public class HeroAI : AIBase
 
     public void ExitBattle()
     {
-        currentState = AIStates.out_of_battle;
+
+        if (GetComponent<Health>().currentHealth > 0)
+        {
+            currentState = AIStates.out_of_battle;
+        }
     }
 
     public void StartBattle()
     {
-        currentState = AIStates.searching;
-        StartSearch.Invoke();
+        if (GetComponent<Health>().currentHealth > 0)
+        {
+            currentState = AIStates.searching;
+            StartSearch.Invoke();
+        }
     }
 
 }
