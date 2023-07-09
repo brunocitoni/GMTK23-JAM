@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Orc
   m_EditorClassIdentifier: 
   enemyName: Orc
-  enemySprite: {fileID: 21300000, guid: a6da16234d37d428eb6aa3fc8b8a23dd, type: 3}
+  enemySprite: {fileID: 21300000, guid: df68419bc39bd7c4e9618e4ef407eee1, type: 3}
   enemyAtk: 10
   enemyMaxHealth: 150
   drops:
