@@ -49,7 +49,8 @@ MonoBehaviour:
   battleMusic: {fileID: 8300000, guid: fe540d6693b5104429b457664c25f7c2, type: 3}
   restMusic: {fileID: 8300000, guid: 7ba16daf8cece674299009d52fcf55a7, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 28c1ca0a569cbbc4abb4b7a1eb42bac5, type: 3}
-  defaultAudioPlayer: {fileID: 0}
+  muteButton: {fileID: 0}
+  defaultAudioPlayer: {fileID: 8777189057027587662, guid: ae15893995f8bd84c874ea371911e0e4, type: 3}
 --- !u!82 &1269638910
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,7 +60,7 @@ AudioSource:
   m_GameObject: {fileID: 1269638909}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7313046737628135034, guid: 9c4a73bb2782b6f40907c1df98188105, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
