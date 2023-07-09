@@ -41,15 +41,24 @@ public class AudioManager : MonoBehaviour
 
     private void StartPlayingBattleMusic()
     {
+        float time = 0;
+        if (audioSource.clip != mainMenuMusic)
+        {
+            time = audioSource.time;
+        }
+
         audioSource.Stop();
         audioSource.clip = battleMusic;
+        audioSource.time = time;
         audioSource.Play();
     }
 
     private void StopPlayingBattleMusic()
     {
+        float time = audioSource.time;
         audioSource.Stop();
         audioSource.clip = restMusic;
+        audioSource.time = time;
         audioSource.Play();
     }
 }
