@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
             if (prob>chance)
             {
                 itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
-                break;
             }
         }
 
