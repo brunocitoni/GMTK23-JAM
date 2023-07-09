@@ -85,14 +85,14 @@ public class WaveManager : SerializedMonoBehaviour
         Debug.Log("A new wave start has been invoked");
         waveCountdown.SetDuration(4);
         waveCountdown.RestartTimer();
-        waveCountdown.TimerElapsed += () =>
-        {
-            waveCountdown.timerText.text = "";
-            OnWaveStart?.Invoke();
-            StartWave();
-        };
+        waveCountdown.TimerElapsed += ActuallyInvoke;
+    }
 
-        //OnWaveStart?.Invoke();
-        //StartWave();
+    private static void ActuallyInvoke()
+    {
+        waveCountdown.TimerElapsed -= ActuallyInvoke; // immediately unsub because we are goign to subscribe again
+        waveCountdown.timerText.text = "";
+        OnWaveStart?.Invoke();
+        StartWave();
     }
 }
