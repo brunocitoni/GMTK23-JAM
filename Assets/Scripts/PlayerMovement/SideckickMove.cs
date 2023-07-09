@@ -67,7 +67,7 @@ public class SideckickMove : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(playerDirection.x*playerspeed,playerDirection.y*playerspeed);
+        rb.MovePosition((Vector2)transform.position + (playerDirection * playerspeed * Time.deltaTime));
     }
 }
 
