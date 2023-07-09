@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: DefensePotion
   m_EditorClassIdentifier: 
   recipeName: DefensePotion
-  recipeResult: {fileID: 0}
-  requiredIngredients: []
+  recipeResult: {fileID: 11400000, guid: 276bc863c558748a098056f3ea8b1665, type: 2}
+  requiredIngredients:
+  - {fileID: 11400000, guid: 6667493f889a74cbf853b141823e5ae3, type: 2}
+  - {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
+  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}

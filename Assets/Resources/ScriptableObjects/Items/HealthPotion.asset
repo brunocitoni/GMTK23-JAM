@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: HealthPotion
   itemSprite: {fileID: 21300000, guid: 0c159acc5ce30774e924c66d71f1b9c5, type: 3}
   givable: 1
+  craftable: 1

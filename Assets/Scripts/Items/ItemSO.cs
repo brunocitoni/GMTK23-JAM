@@ -10,6 +10,7 @@ public class ItemSO : ScriptableObject
     public Sprite itemSprite;
     public bool givable = false;
     public bool craftable = false;
+    public string description;
 }
 
 

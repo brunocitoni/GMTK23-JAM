@@ -324,9 +324,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCraft: 0
   recipList:
-  - {fileID: 11400000, guid: 59958c1002b277149b4ea7514c144a99, type: 2}
-  - {fileID: 11400000, guid: ec5a7d71e725f944eb6f7e6645ecd1d1, type: 2}
-  - {fileID: 11400000, guid: 3804701b49d811f409136054941663f7, type: 2}
+  - {fileID: 11400000, guid: 1922261ec48c83d439a5747c51ab5019, type: 2}
+  - {fileID: 11400000, guid: f819de611e54fed4aa3e06d7a5d5fa8d, type: 2}
+  - {fileID: 11400000, guid: dc58b8864c4fa9a45b044a74084a765c, type: 2}
 --- !u!4 &769722428
 Transform:
   m_ObjectHideFlags: 0
