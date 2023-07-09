@@ -7,12 +7,15 @@ public class Inventory_UI : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject player;
     PlayerInventory pInventory;
+    public GameObject cTable;
+    CraftingTable cTableScript;
     public List<Slot_UI> slots = new List<Slot_UI>();
     //public Sprite icon;
 
     void Start()
     {
         pInventory = player.GetComponent<PlayerInventory>();
+        cTableScript = cTable.GetComponent<CraftingTable>();
         Setup();
     }
     // Update is called once per frame
@@ -33,7 +36,9 @@ public class Inventory_UI : MonoBehaviour
         }
         else
         {
-            inventoryPanel.SetActive(false);
+            if(!cTableScript.canCraft){
+                inventoryPanel.SetActive(false);
+            }
         }
     }
 

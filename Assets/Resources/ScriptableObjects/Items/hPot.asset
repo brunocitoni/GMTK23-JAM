@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4761f6c543b8a94daed8ef3b4cb0f22, type: 3}
-  m_Name: TestWeapon
+  m_Script: {fileID: 11500000, guid: b647667062d784c48a2a3ad880f6366a, type: 3}
+  m_Name: hPot
   m_EditorClassIdentifier: 
-  damage: 50
-  range: 2
-  weaponLength: 0.75
-  attackMoveSpeed: 5
+  itemName: hPot
+  itemSprite: {fileID: 21300000, guid: dae33700bd23f76409a80bf78fdb8a42, type: 3}
+  givable: 1
+  craftable: 1

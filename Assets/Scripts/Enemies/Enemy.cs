@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
         {
             float chance =thisEnemy.dropRate[i];
             float prob = Random.Range(0f, 1f);
-            Debug.Log(prob);
             if (prob>chance)
             {
                  itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
