@@ -16,4 +16,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 1d4ee3523171c8940a4ca7a000a83f3c, type: 3}
   givable: 1
   craftable: 1
-  description: SHINY! (Give to gain points)
+  description: SHINY! (Give to hero gain points)
