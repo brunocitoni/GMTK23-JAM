@@ -36,7 +36,6 @@ public class EndWavePanel : MonoBehaviour
 
         // invoke new wave start
         InvokeNewWaveStart();
-
     }
 
     public void OnClickUpgrade() {
@@ -47,9 +46,6 @@ public class EndWavePanel : MonoBehaviour
         this.gameObject.SetActive(false);
         // toggle upgrade panel
         upgradePanel.SetActive(true);
-
-        // invoke new wave start
-        //InvokeNewWaveStart();
     }
 
     private void InvokeNewWaveStart() {
