@@ -45,26 +45,50 @@ public class Health : MonoBehaviour
 
     public virtual bool ModifyHealth(int change)
     {
-        if (change > 0)
-        { // if we are gaining life no other checks should be made, just give the life that was input 
+        if (change > 0) // this entity is GAINING life
+        { 
             currentHealth += change;
-            if(currentHealth > 0)
+            if (currentHealth > 0)
             {
                 hasDied = false;
             }
         }
-        else { // if this entity is TAKING damage
-
-            if (defencePotion) {
-                Debug.Log(this.name + " taking less damage because of defence potion");
-                currentHealth += change + Data.defPotionBuff; // do less damage TO the hero
-            } else if (HeroManager.attackBuffActive && this.gameObject.tag != "Hero")
+        else // if this entity is TAKING damage
+        {
+            if (this.gameObject.tag == "Player") // if this is the player taking damage, no modifiers should apply
             {
-                Debug.Log("Dealing more damage to" + this.gameObject.name + " because of attack potion");
-                currentHealth += change - Data.atkPotionBuff; // take more damage 
+                currentHealth += change;
             }
-            else {
-                currentHealth += change; // normal damage if neither potion is active in all cases
+            else
+            {
+                if (this.gameObject.tag == "Hero") //if the hero is taking damage
+                {
+                    change = CalculateModifiedDefenceDamage(change); // modify damage based on defence rating
+                    if (HeroManager.defenceBuffActive) // if this is the hero and the defence buff is active
+                    {
+                        Debug.Log(this.name + " taking less damage because of defence potion");
+                        currentHealth += change + Data.defPotionBuff; // do less damage TO the hero
+                    }
+                    else
+                    {
+                        Debug.Log(this.name + " taking normal damage (after armor modifier)");
+                        currentHealth += change;
+                    }
+                }
+                else // damage us being received by anything else other than player and hero (i.e. enemies)
+                {
+                    change = CalculateModifiedAttackDamage(change); // modify damage based on attack rating
+                    if (HeroManager.attackBuffActive)
+                    {
+                        Debug.Log(this.name + " dealing even more damage because of attack potion");
+                        currentHealth += change - Data.atkPotionBuff; // do less damage TO the hero
+                    }
+                    else
+                    {
+                        Debug.Log(this.name + " dealing normal damage (after weapon modifier)");
+                        currentHealth += change;
+                    }
+                }
             }
         }
 
@@ -89,6 +113,16 @@ public class Health : MonoBehaviour
         }
 
         return false;
+    }
+
+    private int CalculateModifiedAttackDamage(int change)
+    {
+        return change - HeroManager.attackModifier; // modify damage based on attack rating
+    }
+
+    private int CalculateModifiedDefenceDamage(int change)
+    {
+        return change + HeroManager.defenceModifier; // modify damage based on defence rating
     }
 
     IEnumerator HitFlash()

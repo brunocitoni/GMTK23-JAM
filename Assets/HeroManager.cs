@@ -13,8 +13,8 @@ public class HeroManager : MonoBehaviour
     public int armorLevel = 0;
     public int weaponLevel = 0;
 
-    public int attackModifier;
-    public int defenceModifier;
+    public static int attackModifier;
+    public static int defenceModifier;
 
     private void Start()
     {
@@ -53,8 +53,7 @@ public class HeroManager : MonoBehaviour
         Debug.Log("Resolving defence potion");
         activeEffectTimer.SetDuration(Data.defPotionDuration);
         defenceBuffActive = true;
-        heroHealth.defencePotion = true;
-        activeEffectTimer.TimerElapsed += () => { heroHealth.defencePotion = false; defenceBuffActive = false; };
+        activeEffectTimer.TimerElapsed += () => defenceBuffActive = false;
         activeEffectTimer.RestartTimer();
     }
 
@@ -62,7 +61,6 @@ public class HeroManager : MonoBehaviour
     {
         attackBuffActive = false;
         defenceBuffActive = false;
-        heroHealth.defencePotion = false;
     }
 
     private void CalculateAttackModifier() {
