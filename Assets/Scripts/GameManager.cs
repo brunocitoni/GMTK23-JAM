@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnClickNewGame() {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameSceneBruno");
         OnNewGame?.Invoke();
     }
 
