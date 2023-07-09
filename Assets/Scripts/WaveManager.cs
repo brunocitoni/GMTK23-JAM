@@ -25,6 +25,9 @@ public class WaveManager : SerializedMonoBehaviour
     public delegate void WaveStarting();
     public static event WaveStarting OnWaveStart;
 
+    public delegate void WaveCountdownStarting();
+    public static event WaveCountdownStarting OnWaveStartCountdownBegin;
+
     private void Start()
     {
 
@@ -97,6 +100,7 @@ public class WaveManager : SerializedMonoBehaviour
         Debug.Log("A new wave start has been invoked");
         waveCountdown.SetDuration(4);
         waveCountdown.RestartTimer();
+        OnWaveStartCountdownBegin?.Invoke();
         // set coundown to wave UI active
         //countdownLabel.enabled = true;
         waveCountdown.TimerElapsed += ActuallyInvoke;
