@@ -35,15 +35,15 @@ public class UpgradePanel : MonoBehaviour
     // display requirements in terms on items and update UI to reflect whether buttons should be enabled
     private void UpdateUI() {
 
-        ironRequiredForWeapon = upgradeMaterialIRONWeapon[heroManager.weaponLevel-1];
-        scrapRequiredForWeapon = upgradeMaterialSCRAP[heroManager.weaponLevel-1];
+        ironRequiredForWeapon = upgradeMaterialIRONWeapon[HeroManager.weaponLevel];
+        scrapRequiredForWeapon = upgradeMaterialSCRAP[HeroManager.weaponLevel];
 
         ironRequiredWeapon.text = "x" + ironRequiredForWeapon.ToString();
         scrapsRequiredWeapon.text = "x" + scrapRequiredForWeapon.ToString();
 
-        ironRequiredForArmor = upgradeMaterialIRON[heroManager.armorLevel-1];
-        leatherRequiredForArmor = upgradeMaterialLEATHER[heroManager.armorLevel-1];
-        scrapRequiredForArmor = upgradeMaterialSCRAP[heroManager.armorLevel-1];
+        ironRequiredForArmor = upgradeMaterialIRON[HeroManager.armorLevel];
+        leatherRequiredForArmor = upgradeMaterialLEATHER[HeroManager.armorLevel];
+        scrapRequiredForArmor = upgradeMaterialSCRAP[HeroManager.armorLevel];
 
         ironRequiredArmor.text = "x" + ironRequiredForArmor.ToString();
         leatherRequiredArmor.text = "x" + leatherRequiredForArmor.ToString();
@@ -76,11 +76,11 @@ public class UpgradePanel : MonoBehaviour
 
     private void CheckIfMaxLevel() {
 
-        if (heroManager.armorLevel == 3) {
+        if (HeroManager.armorLevel == 3) {
             ArmorUpgradeAvailable(false, "You can't upgrade the hero's armor any further");
         }
 
-        if (heroManager.weaponLevel == 3)
+        if (HeroManager.weaponLevel == 3)
         {
             WeaponUpgradeAvailable(false, "You can't upgrade the hero's weapon any further");
         }
@@ -103,7 +103,7 @@ public class UpgradePanel : MonoBehaviour
     }
 
     public void UpgradeWeapon() {
-        heroManager.weaponLevel++;
+        HeroManager.weaponLevel++;
         RemoveItemsFromInventory("Iron", ironRequiredForWeapon);
         RemoveItemsFromInventory("Scrap", scrapRequiredForWeapon);
         UpdateUI();
@@ -111,7 +111,7 @@ public class UpgradePanel : MonoBehaviour
 
     public void UpgradeArmor() {
 
-        heroManager.armorLevel++;
+        HeroManager.armorLevel++;
         RemoveItemsFromInventory("Iron", ironRequiredForArmor);
         RemoveItemsFromInventory("Scrap", scrapRequiredForArmor);
         RemoveItemsFromInventory("Leather", leatherRequiredForArmor);

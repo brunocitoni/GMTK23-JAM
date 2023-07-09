@@ -10,11 +10,8 @@ public class HeroManager : MonoBehaviour
     public static bool attackBuffActive = false;
     public static bool defenceBuffActive = false;
 
-    public int armorLevel = 1;
-    public int weaponLevel = 1;
-
-    public static int attackModifier;
-    public static int defenceModifier;
+    public static int armorLevel = 0;
+    public static int weaponLevel = 0;
 
     private void Start()
     {
@@ -61,14 +58,5 @@ public class HeroManager : MonoBehaviour
     {
         attackBuffActive = false;
         defenceBuffActive = false;
-    }
-
-    private void CalculateAttackModifier() {
-
-        attackModifier = (weaponLevel * heroAI.heldWeapon.damage);
-    }
-
-    private void CalculateDefenceModifier() {
-        defenceModifier = armorLevel * 2;
     }
 }

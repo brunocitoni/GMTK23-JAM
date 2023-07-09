@@ -65,12 +65,12 @@ public class Health : MonoBehaviour
                     change = CalculateModifiedDefenceDamage(change); // modify damage based on defence rating
                     if (HeroManager.defenceBuffActive) // if this is the hero and the defence buff is active
                     {
-                        Debug.Log(this.name + " taking less damage because of defence potion");
+                        Debug.Log(this.name + " taking less damage (" + change + ") because of defence potion");
                         currentHealth += change + Data.defPotionBuff; // do less damage TO the hero
                     }
                     else
                     {
-                        Debug.Log(this.name + " taking normal damage (after armor modifier)");
+                        Debug.Log(this.name + " taking normal damage (" + change + ") (after armor modifier)");
                         currentHealth += change;
                     }
                 }
@@ -79,12 +79,12 @@ public class Health : MonoBehaviour
                     change = CalculateModifiedAttackDamage(change); // modify damage based on attack rating
                     if (HeroManager.attackBuffActive)
                     {
-                        Debug.Log(this.name + " dealing even more damage because of attack potion");
+                        Debug.Log(this.name + " dealing even more damage (" + change + ") because of attack potion");
                         currentHealth += change - Data.atkPotionBuff; // do less damage TO the hero
                     }
                     else
                     {
-                        Debug.Log(this.name + " dealing normal damage (after weapon modifier)");
+                        Debug.Log(this.name + " dealing normal damage (" + change + ") (after weapon modifier)");
                         currentHealth += change;
                     }
                 }
@@ -116,12 +116,12 @@ public class Health : MonoBehaviour
 
     private float CalculateModifiedAttackDamage(float change)
     {
-        return change * HeroManager.attackModifier; // modify damage based on attack rating
+        return change * (HeroManager.weaponLevel+1); // modify damage based on attack rating
     }
 
     private float CalculateModifiedDefenceDamage(float change)
     {
-        return change / HeroManager.defenceModifier; // modify damage based on defence rating
+        return change / (HeroManager.armorLevel+1); // modify damage based on defence rating
     }
 
     IEnumerator HitFlash()
