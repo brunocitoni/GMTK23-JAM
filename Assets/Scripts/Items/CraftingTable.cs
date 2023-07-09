@@ -12,11 +12,18 @@ public class CraftingTable : MonoBehaviour
     void Start()
     {
         canCraft = false;
+        WaveManager.OnWaveComplete += ToggleCraftingOff;
+    }
+
+    private void OnDestroy()
+    {
+        WaveManager.OnWaveComplete -= ToggleCraftingOff;
     }
 
     // Update is called once per frame
-    void Update()
+    void ToggleCraftingOff()
     {
+        canCraft = false;
     }
     
     private void OnTriggerEnter2D(Collider2D coll)
@@ -27,6 +34,7 @@ public class CraftingTable : MonoBehaviour
 
         }
     }
+
     private void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.tag == "Player")
