@@ -50,15 +50,15 @@ public class EnemySpawner : MonoBehaviour
         if (WaveManager.waveCounter < 2)
         {
             newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv0[Random.Range(0, spawnableEnemiesLv0.Count)];
-        } else if (WaveManager.waveCounter > 2 && WaveManager.waveCounter < 6)
+        } else if (WaveManager.waveCounter > 2 && WaveManager.waveCounter < 5)
         {
             newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv1[Random.Range(0, spawnableEnemiesLv1.Count)];
         }
-        else if (WaveManager.waveCounter > 6 && WaveManager.waveCounter < 10)
+        else if (WaveManager.waveCounter > 5 && WaveManager.waveCounter < 8)
         {
             newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv2[Random.Range(0, spawnableEnemiesLv2.Count)];
         }
-        else if (WaveManager.waveCounter > 10)
+        else if (WaveManager.waveCounter > 8)
         {
             newEnemy.GetComponent<Enemy>().thisEnemy = spawnableEnemiesLv2[Random.Range(0, spawnableEnemiesLv3.Count)];
         }
@@ -68,7 +68,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         currentNumberOfEnemiesSpawned++;
-
         spawnerTimer.RestartTimer();
     }
 

@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnClickRestart() {
+        Data.waveLenghtInSeconds = 20 + 1;
+        Data.spawnDelay = 7;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
