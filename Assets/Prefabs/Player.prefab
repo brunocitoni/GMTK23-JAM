@@ -72,6 +72,8 @@ MonoBehaviour:
   maxHealth: 100
   defencePotion: 0
   attackPotion: 0
+  attackModifier: 0
+  defenceModifier: 0
   healthbar: {fileID: 0}
   hasDied: 0
   healthbarUISlider: {fileID: 0}
@@ -106,6 +108,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab41e013baacd48f3b54afe216355874, type: 2}
   - {fileID: 11400000, guid: 276bc863c558748a098056f3ea8b1665, type: 2}
   - {fileID: 11400000, guid: a6c675a6806264b6494d280bac5b63a7, type: 2}
+  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
+  - {fileID: 11400000, guid: 9aaa5288211c04471899735dcc21a502, type: 2}
+  - {fileID: 11400000, guid: 7e47d949e742746b199ea8633273f400, type: 2}
+  - {fileID: 11400000, guid: d33c402a11da64e28865795abe62713d, type: 2}
   inv_UI: {fileID: 0}
 --- !u!114 &9191741021118605247
 MonoBehaviour:
