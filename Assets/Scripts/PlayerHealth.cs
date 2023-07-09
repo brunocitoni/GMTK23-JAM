@@ -41,6 +41,7 @@ public class PlayerHealth : Health
         }
 
         if (currentHealth <= 0) {
+            Debug.Log("Invoking on player death in playerhealth");
             OnPlayerDeath?.Invoke();
         }
 

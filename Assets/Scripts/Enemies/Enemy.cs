@@ -71,4 +71,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void OnDestroy()
+    {
+        healthScript.OnThisDeath -= Die;
+    }
+
 }

@@ -14,6 +14,11 @@ public class EndWavePanel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        WaveManager.OnWaveComplete -= DisplayPanel;
+    }
+
     private void DisplayPanel() {
 
         this.gameObject.SetActive(true);
