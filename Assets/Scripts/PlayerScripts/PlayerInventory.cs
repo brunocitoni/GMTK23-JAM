@@ -15,6 +15,8 @@ public class PlayerInventory : MonoBehaviour
 
     public static int itemsCrafted = 0;
 
+    public static int trophiesGiven = 0;
+
     public CraftingTable craft;
     public CraftingPanel_UI craftingPanelUI;
 
@@ -135,6 +137,10 @@ public class PlayerInventory : MonoBehaviour
                 potionsDrank++;
                 OnDefencePotionGiven?.Invoke();
                     break;
+            case "Trophy":
+                Debug.Log("Trophy given to here");
+                trophiesGiven++;
+                break;
             default:
                 break;
 
