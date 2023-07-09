@@ -7,8 +7,8 @@ public static class Data
     public static int heroMaxHealth = 250;
     public static int playerMaxHealth = 35;
 
-    public static int waveLenghtInSeconds = 25 +1; // seconds
-    public static float spawnDelay = 8;
+    public static int waveLenghtInSeconds = 26 +1; // seconds
+    public static float spawnDelay = 9;
 
     public static int atkPotionDuration = 10; // seconds
     public static int atkPotionBuff = 10; 
