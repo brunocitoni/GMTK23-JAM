@@ -57,7 +57,7 @@ public class UpgradePanel : MonoBehaviour
     public void CheckIfUpgradeIsAvailable() {
 
         ironHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Iron").Count;
-        scrapHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Scraps").Count;
+        scrapHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Scrap").Count;
         leatherHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Leather").Count;
         if (ironHeld >= ironRequiredForWeapon && scrapHeld >= scrapRequiredForWeapon) {
 

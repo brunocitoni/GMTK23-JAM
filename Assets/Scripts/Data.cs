@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class Data
 {
-    public static int heroMaxHealth = 250;
+    public static int heroMaxHealth = 200;
     public static int playerMaxHealth = 35;
 
-    public static int waveLenghtInSeconds = 26 +1; // seconds
-    public static float spawnDelay = 8;
+    public static int waveLenghtInSeconds = 20+1; // seconds
+    public static float spawnDelay = 7;
 
     public static int atkPotionDuration = 10; // seconds
     public static int atkPotionBuff = 10; 
