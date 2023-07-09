@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
         // this need to initialise then will automatically reset to false
         endWavePanel.SetActive(true);
+        waveText.SetActive(false);
 
         GameManager.OnGameOver += ToggleGameOverScreen;
         WaveManager.OnWaveStart += ActivateWaveTimer;
