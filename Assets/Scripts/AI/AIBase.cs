@@ -34,6 +34,9 @@ public class AIBase : MonoBehaviour
     public Transform weaponeffect;
     private Animator anim;
 
+    public AudioClip slashSound;
+    public AudioClip slashMissSound;
+
 
     [HideInInspector]
     public UnityEvent StartSearch, StartPersue, StartAttack, StartAvoiding;
@@ -256,11 +259,14 @@ public class AIBase : MonoBehaviour
             anim.SetTrigger("Slash");
 
             //CameraShake
-            CameraManager.Shake(0.1f, 0.25f);
+            CameraManager.Shake(0.1f, 0.15f);
+
+            //SOund
+            AudioManager.PlaySound(slashSound, new Vector2(-.2f, .2f));
         }
         else
         {
-            //Missed attack (maybe some sort of effect)
+            AudioManager.PlaySound(slashMissSound, new Vector2(-.2f, .2f));
         }
 
         timer = attackduration;

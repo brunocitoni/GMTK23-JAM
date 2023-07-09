@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip restMusic;
     public AudioClip mainMenuMusic;
 
+    public GameObject defaultAudioPlayer;
+
     public static AudioManager instance;
 
     private void Awake()
@@ -16,7 +18,6 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -60,6 +61,15 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = restMusic;
         audioSource.time = time;
         audioSource.Play();
+    }
+
+    public static void PlaySound(AudioClip sounds, Vector2 pitchRange = default(Vector2))
+    {
+        GameObject audioGameObject = Instantiate(instance.defaultAudioPlayer, instance.transform);
+        AudioSource source = audioGameObject.GetComponent<AudioSource>();
+        source.clip = sounds;
+        source.pitch *= 1 + Random.Range(pitchRange.x, pitchRange.y);
+        source.Play();
     }
 }
 
