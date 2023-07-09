@@ -19,7 +19,7 @@ public class PlayerHealth : Health
 
     }
 
-    public override void SetHealth(int health)
+    public override void SetHealth(float health)
     {
         base.SetHealth(health);
 
@@ -30,7 +30,7 @@ public class PlayerHealth : Health
         }
     }
 
-    public override bool ModifyHealth(int change)
+    public override bool ModifyHealth(float change)
     {
         Debug.Log("Player took DAMAGE!! {" + Time.time);
         bool ret = base.ModifyHealth(change);

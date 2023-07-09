@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth = 100; // default to 100, should be overritten;
+    public float currentHealth;
+    public float maxHealth = 100f; // default to 100, should be overritten;
 
     public bool defencePotion = false;
     public bool attackPotion = false;
@@ -28,11 +28,10 @@ public class Health : MonoBehaviour
         if (gameObject.tag == "Hero") // if this is the health script of the hero
         {
             SetHealth(Data.heroMaxHealth);
-            
         }
     }
 
-    public virtual void SetHealth(int health)
+    public virtual void SetHealth(float health)
     {
         healthbar = GetComponent<InWorldSlider>();
 
@@ -43,7 +42,7 @@ public class Health : MonoBehaviour
         hasDied = false;
     }
 
-    public virtual bool ModifyHealth(int change)
+    public virtual bool ModifyHealth(float change)
     {
         if (change > 0) // this entity is GAINING life
         { 
@@ -115,14 +114,14 @@ public class Health : MonoBehaviour
         return false;
     }
 
-    private int CalculateModifiedAttackDamage(int change)
+    private float CalculateModifiedAttackDamage(float change)
     {
-        return change - HeroManager.attackModifier; // modify damage based on attack rating
+        return change * HeroManager.attackModifier; // modify damage based on attack rating
     }
 
-    private int CalculateModifiedDefenceDamage(int change)
+    private float CalculateModifiedDefenceDamage(float change)
     {
-        return change + HeroManager.defenceModifier; // modify damage based on defence rating
+        return change / HeroManager.defenceModifier; // modify damage based on defence rating
     }
 
     IEnumerator HitFlash()

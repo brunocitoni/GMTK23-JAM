@@ -35,15 +35,15 @@ public class UpgradePanel : MonoBehaviour
     // display requirements in terms on items and update UI to reflect whether buttons should be enabled
     private void UpdateUI() {
 
-        ironRequiredForWeapon = upgradeMaterialIRONWeapon[heroManager.weaponLevel];
-        scrapRequiredForWeapon = upgradeMaterialSCRAP[heroManager.weaponLevel];
+        ironRequiredForWeapon = upgradeMaterialIRONWeapon[heroManager.weaponLevel-1];
+        scrapRequiredForWeapon = upgradeMaterialSCRAP[heroManager.weaponLevel-1];
 
         ironRequiredWeapon.text = "x" + ironRequiredForWeapon.ToString();
         scrapsRequiredWeapon.text = "x" + scrapRequiredForWeapon.ToString();
 
-        ironRequiredForArmor = upgradeMaterialIRON[heroManager.armorLevel];
-        leatherRequiredForArmor = upgradeMaterialLEATHER[heroManager.armorLevel];
-        scrapRequiredForArmor = upgradeMaterialSCRAP[heroManager.armorLevel];
+        ironRequiredForArmor = upgradeMaterialIRON[heroManager.armorLevel-1];
+        leatherRequiredForArmor = upgradeMaterialLEATHER[heroManager.armorLevel-1];
+        scrapRequiredForArmor = upgradeMaterialSCRAP[heroManager.armorLevel-1];
 
         ironRequiredArmor.text = "x" + ironRequiredForArmor.ToString();
         leatherRequiredArmor.text = "x" + leatherRequiredForArmor.ToString();
