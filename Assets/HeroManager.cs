@@ -21,6 +21,7 @@ public class HeroManager : MonoBehaviour
         PlayerInventory.OnHealthPotionGiven += HealthPotion;
         PlayerInventory.OnAttackPotionGiven += AttackPotion;
         PlayerInventory.OnDefencePotionGiven += DefencePotion;
+        WaveManager.OnWaveComplete += EndPotionBuffs;
     }
 
     private void OnDestroy()
@@ -28,6 +29,7 @@ public class HeroManager : MonoBehaviour
         PlayerInventory.OnHealthPotionGiven -= HealthPotion;
         PlayerInventory.OnAttackPotionGiven -= AttackPotion;
         PlayerInventory.OnDefencePotionGiven -= DefencePotion;
+        WaveManager.OnWaveComplete -= EndPotionBuffs;
     }
 
 
@@ -54,6 +56,13 @@ public class HeroManager : MonoBehaviour
         heroHealth.defencePotion = true;
         activeEffectTimer.TimerElapsed += () => { heroHealth.defencePotion = false; defenceBuffActive = false; };
         activeEffectTimer.RestartTimer();
+    }
+
+    private void EndPotionBuffs()
+    {
+        attackBuffActive = false;
+        defenceBuffActive = false;
+        heroHealth.defencePotion = false;
     }
 
     private void CalculateAttackModifier() {
