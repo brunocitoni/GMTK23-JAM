@@ -5203,11 +5203,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move with the WASD/Arrow Keys\n\nToggle inventory with TAB and give items
-    to the Hero by clicking on them when near them (they will be highlighted in green
-    when givable!). \n\nYou can drop items by right clicking on them while in the
-    inventory\n\nYou can craft new potions at your trusty crafting table by pressing
-    SPACE when near it"
+  m_text: 'Move with the WASD/Arrow Keys
+
+
+    You can craft new potions at your
+    trusty crafting table when near it
+
+
+    Give potions to the Hero by clicking
+    on them when near the Hero (items will be highlighted in green when givable!)
+
+
+    You
+    can drop items by right clicking on them'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc21bf9582a75234d997e55db0732d51, type: 2}
   m_sharedMaterial: {fileID: 7674562718895244988, guid: dc21bf9582a75234d997e55db0732d51, type: 2}
@@ -5234,7 +5242,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.1
+  m_fontSize: 33.8
   m_fontSizeBase: 20.65
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -20,14 +20,14 @@ public class CraftingPanel_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && cTableScript.canCraft)
+        /*if(Input.GetKeyDown(KeyCode.Space) && cTableScript.canCraft)
         {
             ToggleCraftingPanel();    
         }
         if(!cTableScript.canCraft)
         {
             craftingPanel.SetActive(false);    
-        }
+        }*/
 
         /*if (cTableScript.canCraft)
         {
@@ -37,6 +37,15 @@ public class CraftingPanel_UI : MonoBehaviour
         {
             craftingPanel.SetActive(false);
         }*/
+
+        if (cTableScript.canCraft)
+        {
+            craftingPanel.SetActive(true);
+        }
+        else
+        {
+            craftingPanel.SetActive(false);
+        }
         //fix alternance si on va sur craft avec inventaire ouvert
     }
 

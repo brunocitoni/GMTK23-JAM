@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.735849, g: 0.45326158, b: 0.25338197, a: 1}
+  m_Color: {r: 0.735849, g: 0.45326158, b: 0.25338197, a: 0.6862745}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 8288119461420699680}
   thisItem: {fileID: 0}
+  thisListRecipe: []
   button: {fileID: 7802683886185450501}
   texteBouton: {fileID: 7878069571908752252}
 --- !u!1 &8288119461420699682

@@ -21,26 +21,26 @@ public class Inventory_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        /*if(Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleInventory();    
-        }
+        }*/
     }
 
     public void ToggleInventory()
     {
-        Setup();
+        /*Setup();
         if (!inventoryPanel.activeSelf)
         {
             inventoryPanel.SetActive(true);
         }
         else
         {
-            /*if(!cTableScript.canCraft){
-                inventoryPanel.SetActive(false);
-            }*/
+            //if(!cTableScript.canCraft){
+           //     inventoryPanel.SetActive(false);
+           // }
             inventoryPanel.SetActive(false);
-        }
+        }*/
     }
 
     public void Setup()
