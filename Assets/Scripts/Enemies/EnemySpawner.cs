@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Timer spawnerTimer;
     [SerializeField] List<GameObject> spawnLocations = new List<GameObject>();
+    private GameManager gameManager;
     public List<EnemySO> spawnableEnemies = new List<EnemySO>();
     public int currentNumberOfEnemiesSpawned;
     public static int enemyKilled = 0;
@@ -19,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
         WaveManager.OnWaveStart += WaveStarted;
         GameManager.OnGameOver += StopSpawning;
         spawnerTimer.TimerElapsed += StartSpawning;
+
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void WaveStarted()
@@ -51,5 +54,10 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Stopping the spawning");
         spawnerTimer.StopTimer();
+
+        /*if (GameObject.FindGameObjectWithTag("Hero").GetComponent<Health>().currentHealth <= 0)
+        {
+            gameManager.TriggerGameOver();
+        }*/
     }
 }

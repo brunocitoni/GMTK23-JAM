@@ -746,11 +746,11 @@ MonoBehaviour:
   - {fileID: 875959618}
   - {fileID: 1028932272}
   spawnableEnemies:
+  - {fileID: 11400000, guid: d2a57e882e55e41059ae360921dacadb, type: 2}
+  - {fileID: 11400000, guid: b7f716c0a46ffbf4788a43483ae1d5bd, type: 2}
+  - {fileID: 11400000, guid: 767fdba854d882c4a8d05f816bc65f06, type: 2}
   - {fileID: 11400000, guid: 639343e152c8edd4c8a35f96d6584869, type: 2}
   - {fileID: 11400000, guid: 3b970d627dd8f47768150e2504f9ecb5, type: 2}
-  - {fileID: 11400000, guid: d2a57e882e55e41059ae360921dacadb, type: 2}
-  - {fileID: 11400000, guid: 767fdba854d882c4a8d05f816bc65f06, type: 2}
-  - {fileID: 11400000, guid: b7f716c0a46ffbf4788a43483ae1d5bd, type: 2}
   currentNumberOfEnemiesSpawned: 0
 --- !u!4 &1515803658
 Transform:
@@ -893,6 +893,14 @@ PrefabInstance:
     - target: {fileID: 946779995293708958, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
       propertyPath: m_Name
       value: UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 946779995687507312, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 946779995687507312, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1918700823854433161, guid: 11b46ad5470508a4cb79af014733c06b, type: 3}
       propertyPath: inventory
