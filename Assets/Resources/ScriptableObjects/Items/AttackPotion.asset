@@ -16,3 +16,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 1aba60963b7a90f438270ac13e48a507, type: 3}
   givable: 1
   craftable: 1
+  description: When given, buffs the Hero's attack power

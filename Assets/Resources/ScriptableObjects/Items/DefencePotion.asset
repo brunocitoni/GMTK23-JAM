@@ -16,3 +16,4 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 51ebb9ece22704c46951e9a809df4862, type: 3}
   givable: 1
   craftable: 1
+  description: When given, buffs the Hero's armor

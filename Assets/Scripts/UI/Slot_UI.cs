@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public class Slot_UI : MonoBehaviour, IPointerClickHandler
+using TMPro;
+public class Slot_UI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image itemIcon;
+    public GameObject descriptionPanel;
     public ItemSO thisItem;
     PlayerInventory plInv;
     public bool nearHero;
+    public TextMeshProUGUI texteDescription;
+    
 
     public Transform heroTransform;
     public Transform playerTransform;
@@ -18,7 +21,6 @@ public class Slot_UI : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         plInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-
         heroTransform = GameObject.FindGameObjectWithTag("Hero").transform;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -31,6 +33,7 @@ public class Slot_UI : MonoBehaviour, IPointerClickHandler
         {
             itemIcon.sprite = thisItem.itemSprite;
             itemIcon.color = new Color(1, 1, 1, 1);
+            texteDescription.text = thisItem.description;
         }
     }
 
@@ -39,6 +42,7 @@ public class Slot_UI : MonoBehaviour, IPointerClickHandler
         thisItem = null;
         itemIcon.sprite = null;
         itemIcon.color = new Color(1, 1, 1, 0);
+        texteDescription.text = "";
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -63,6 +67,15 @@ public class Slot_UI : MonoBehaviour, IPointerClickHandler
             Debug.Log("Right click");
             plInv.DropItem(this, thisItem);
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        descriptionPanel.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        descriptionPanel.SetActive(false);
     }
 
     private void Update()

@@ -15,3 +15,6 @@ MonoBehaviour:
   itemName: Scraps
   itemSprite: {fileID: 21300000, guid: c7589e542a2dfea4eacac33350130ff6, type: 3}
   givable: 0
+  craftable: 0
+  description: Some usefull scraps that you managed to find, can be used for upgrades
+    or to craft trophies

@@ -15,3 +15,6 @@ MonoBehaviour:
   itemName: Iron
   itemSprite: {fileID: 21300000, guid: a874038da37ae7c4dbfca3660d083d08, type: 3}
   givable: 0
+  craftable: 0
+  description: A piece of iron, can be used with other materials to craft an Attack
+    or a Defense Potion or upgrade the hero

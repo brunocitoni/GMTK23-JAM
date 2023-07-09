@@ -15,3 +15,6 @@ MonoBehaviour:
   itemName: Leather
   itemSprite: {fileID: 21300000, guid: aebb83e3c16aee147bbdbdd4f0f52f48, type: 3}
   givable: 0
+  craftable: 0
+  description: A chunk of leather, can be used with other materials to craft a Defense
+    Potion or upgrade the armor of the hero
