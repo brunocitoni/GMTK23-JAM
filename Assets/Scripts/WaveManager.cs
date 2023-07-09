@@ -7,14 +7,14 @@ using UnityEngine;
 public class WaveManager : SerializedMonoBehaviour
 {
     public static Timer waveTimer;
+    public static Timer waveCountdown;
     EnemySpawner enemySpawner;
     public static bool isWaveOngoing = false;
     public static bool waitingForNewWave = true;
     public static int waveCounter = 0;
 
     [SerializeField] GameManager gameManager;
-
-    private Health heroHealth;
+    [SerializeField] GameObject UICanvas;
 
     // events
     public delegate void WaveComplete();
@@ -28,7 +28,9 @@ public class WaveManager : SerializedMonoBehaviour
 
         // get a reference to the enemySpawner to stop and start the spawns
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
-        heroHealth = GameObject.FindGameObjectWithTag("Hero").GetComponent<Health>();
+
+        //get a reference to conwdownTimer in UI Canvas
+        waveCountdown = UICanvas.GetComponent<Timer>();
 
         waveTimer = this.GetComponent<Timer>();
         waveTimer.TimerElapsed += EndWave;
@@ -81,7 +83,16 @@ public class WaveManager : SerializedMonoBehaviour
 
     public static void InvokeWaveStart() {
         Debug.Log("A new wave start has been invoked");
-        OnWaveStart?.Invoke();
-        StartWave();
+        waveCountdown.SetDuration(4);
+        waveCountdown.RestartTimer();
+        waveCountdown.TimerElapsed += () =>
+        {
+            waveCountdown.timerText.text = "";
+            OnWaveStart?.Invoke();
+            StartWave();
+        };
+
+        //OnWaveStart?.Invoke();
+        //StartWave();
     }
 }

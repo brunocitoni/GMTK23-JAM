@@ -11,23 +11,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject atkBuffIcon;
     [SerializeField] GameObject defBuffIcon;
     [SerializeField] GameObject gameOverScreen;
-    [SerializeField] GameObject mainMenuScreen;
 
     // Start is called before the first frame update
     void Awake()
     {
         gameOverScreen.SetActive(false);
-        // these need to initialise then will automatically reset to false
+
+        // this need to initialise then will automatically reset to false
         endWavePanel.SetActive(true);
-        waveText.SetActive(true);
+
         GameManager.OnGameOver += ToggleGameOverScreen;
-        GameManager.OnNewGame += ToggleMainMenuScreen;
+        WaveManager.OnWaveStart += ActivateWaveTimer;
+        WaveManager.OnWaveComplete += DeactivateWaveTimer;
     }
 
     private void OnDestroy()
     {
         GameManager.OnGameOver -= ToggleGameOverScreen;
-        GameManager.OnNewGame -= ToggleMainMenuScreen;
+        WaveManager.OnWaveStart -= ActivateWaveTimer;
+        WaveManager.OnWaveComplete -= DeactivateWaveTimer;
     }
 
     public void ToggleGameOverScreen()
@@ -42,15 +44,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ToggleMainMenuScreen()
+    public void ActivateWaveTimer()
     {
-        if (mainMenuScreen.activeSelf)
-        {
-            mainMenuScreen.SetActive(false);
-        }
-        else {
-            mainMenuScreen.SetActive(true);
-        }
+        waveText.SetActive(true);
+    }
+
+    public void DeactivateWaveTimer()
+    {
+        waveText.SetActive(false);
     }
 
     private void Update()

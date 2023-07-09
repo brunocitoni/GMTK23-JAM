@@ -15,9 +15,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        WaveManager.OnWaveStart += WaveStarted;
         GameManager.OnGameOver += StopSpawning;
-        WaveManager.OnWaveStart += StartSpawning;
+        //WaveManager.OnWaveStart += StartSpawning;
         spawnerTimer.TimerElapsed += StartSpawning;
+    }
+
+    private void WaveStarted()
+    {
         spawnerTimer.SetDuration(timeBetweenSpawns);
         StartSpawning();
     }
