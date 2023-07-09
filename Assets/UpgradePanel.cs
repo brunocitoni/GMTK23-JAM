@@ -57,7 +57,7 @@ public class UpgradePanel : MonoBehaviour
     public void CheckIfUpgradeIsAvailable() {
 
         ironHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Iron").Count;
-        scrapHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Scrap").Count;
+        scrapHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Scraps").Count;
         leatherHeld = inventory.itemsHeld.FindAll(item => item.itemName == "Leather").Count;
         if (ironHeld >= ironRequiredForWeapon && scrapHeld >= scrapRequiredForWeapon) {
 
@@ -105,7 +105,7 @@ public class UpgradePanel : MonoBehaviour
     public void UpgradeWeapon() {
         HeroManager.weaponLevel++;
         RemoveItemsFromInventory("Iron", ironRequiredForWeapon);
-        RemoveItemsFromInventory("Scrap", scrapRequiredForWeapon);
+        RemoveItemsFromInventory("Scraps", scrapRequiredForWeapon);
         UpdateUI();
     }
 
@@ -113,7 +113,7 @@ public class UpgradePanel : MonoBehaviour
 
         HeroManager.armorLevel++;
         RemoveItemsFromInventory("Iron", ironRequiredForArmor);
-        RemoveItemsFromInventory("Scrap", scrapRequiredForArmor);
+        RemoveItemsFromInventory("Scraps", scrapRequiredForArmor);
         RemoveItemsFromInventory("Leather", leatherRequiredForArmor);
         UpdateUI();
     }

@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         //Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
         Debug.Log("Dead");
         // drop item
-        /*for(int i=0; i<thisEnemy.drops.Count; i++)
+        for(int i=0; i<thisEnemy.drops.Count; i++)
         {
             float chance = thisEnemy.dropRate[i];
             float prob = Random.Range(0f, 1f);
@@ -75,9 +75,9 @@ public class Enemy : MonoBehaviour
                 itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
                 break;
             }
-        }*/
+        }
 
-        DecideDrop();
+        //DecideDrop();
 
         //Debug.Log("Destroyinh enemy " + thisEnemy.enemyName);
         // delete this gameobject
