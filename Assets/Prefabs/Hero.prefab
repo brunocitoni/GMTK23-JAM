@@ -34,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 1068319421414522114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.07, y: -0.14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2689884564605246049}
   - {fileID: 111627019712539879}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96ba052395cdf4fcabb093b61d11bb57, type: 3}
   m_Color: {r: 0, g: 1, b: 0.13172197, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,6 +147,8 @@ MonoBehaviour:
   maxHealth: 1000
   defencePotion: 0
   attackPotion: 0
+  attackModifier: 0
+  defenceModifier: 0
   healthbar: {fileID: 5330170579135576170}
   hasDied: 0
 --- !u!114 &5330170579135576170
