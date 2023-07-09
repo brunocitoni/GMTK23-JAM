@@ -10,7 +10,7 @@ public class ItemSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InstanciateScriptableObject();
+        //InstanciateScriptableObject();
     }
 
     // Update is called once per frame
