@@ -5211,7 +5211,7 @@ MonoBehaviour:
     in green when givable!)
 
 
-    You can craft new potions at your trusty scrafting
+    You can craft new potions at your trusty crafting
     table by pressing SPACE when near it'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc21bf9582a75234d997e55db0732d51, type: 2}
