@@ -16,6 +16,8 @@ public class WaveManager : SerializedMonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject UICanvas;
 
+    static TMP_Text countdownLabel;
+
     // events
     public delegate void WaveComplete();
     public static event WaveComplete OnWaveComplete;
@@ -32,6 +34,8 @@ public class WaveManager : SerializedMonoBehaviour
         //get a reference to conwdownTimer in UI Canvas
         waveCountdown = GameObject.Find("UI Canvas Variant").GetComponent<Timer>();
 
+        //countdownLabel = GameObject.Find("UI Canvas Variant").transform.Find("countdownToWaveLabel").GetComponent<TMP_Text>();
+
         waveTimer = this.GetComponent<Timer>();
         waveTimer.TimerElapsed += EndWave;
         waveTimer.SetDuration(Data.waveLenghtInSeconds);
@@ -46,6 +50,9 @@ public class WaveManager : SerializedMonoBehaviour
 
     public static void StartWave()
     {
+        // set coundown to wave UI not active
+        //countdownLabel.enabled = false;
+
         // start the wave timer
         waveTimer.SetDuration(Data.waveLenghtInSeconds);
         waveTimer.RestartTimer();
@@ -74,6 +81,10 @@ public class WaveManager : SerializedMonoBehaviour
         waitingForNewWave = true;
         waveCounter++;
 
+        // add to wave timer, and make enemies spawn quicker
+        Data.waveLenghtInSeconds = Data.waveLenghtInSeconds + waveCounter;
+        Data.spawnDelay = Data.spawnDelay - waveCounter / 5;
+
         // destroy all objects left lying around
         UtilityFunctions.DestroyAllChildren(GameObject.Find("ItemSpawner"));
 
@@ -84,6 +95,8 @@ public class WaveManager : SerializedMonoBehaviour
         Debug.Log("A new wave start has been invoked");
         waveCountdown.SetDuration(4);
         waveCountdown.RestartTimer();
+        // set coundown to wave UI active
+        //countdownLabel.enabled = true;
         waveCountdown.TimerElapsed += ActuallyInvoke;
     }
 
