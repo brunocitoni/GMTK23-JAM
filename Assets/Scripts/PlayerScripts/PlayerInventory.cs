@@ -9,10 +9,11 @@ public class PlayerInventory : MonoBehaviour
 
     public List<ItemSO> itemsHeld = new();
     public Inventory_UI inv_UI;
-<<<<<<< Updated upstream
     Animator anim;
 
     public static int potionsDrank = 0;
+
+    public CraftingTable craft;
 
     public delegate void HealthPotion();
     public static event HealthPotion OnHealthPotionGiven;
@@ -32,9 +33,6 @@ public class PlayerInventory : MonoBehaviour
     public void RefreshUI() {
         inv_UI.Setup();
     }
-=======
-    public CraftingTable craft;
->>>>>>> Stashed changes
 
     public void AddItemToInventory(ItemSO itemToAdd)
     {
@@ -46,11 +44,7 @@ public class PlayerInventory : MonoBehaviour
     {
         itemsHeld.Remove(itemToDrop);
         inventorySlot.SetEmpty();
-<<<<<<< Updated upstream
         RefreshUI();
-=======
-        inv_UI.Setup();
->>>>>>> Stashed changes
     }
 
     public void GiveItemToHero(Slot_UI inventorySlot, ItemSO itemToThrow)

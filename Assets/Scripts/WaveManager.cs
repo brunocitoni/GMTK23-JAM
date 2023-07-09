@@ -30,7 +30,7 @@ public class WaveManager : SerializedMonoBehaviour
         enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
 
         //get a reference to conwdownTimer in UI Canvas
-        waveCountdown = GameObject.Find("UI Canvas").GetComponent<Timer>();
+        waveCountdown = GameObject.Find("UI Canvas Variant").GetComponent<Timer>();
 
         waveTimer = this.GetComponent<Timer>();
         waveTimer.TimerElapsed += EndWave;

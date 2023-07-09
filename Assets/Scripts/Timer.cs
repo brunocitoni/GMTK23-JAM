@@ -71,7 +71,7 @@ public class Timer : MonoBehaviour
         // Update the timer text
         if (timerInt == 0)
         {
-            if (this.gameObject.name == "UI Canvas")
+            if (this.gameObject.name == "UI Canvas Variant")
             {
                 timerText.text = "GO!";
             }
