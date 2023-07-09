@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
         ai.attackCooldown = thisEnemy.attackCooldown;
         ai.attackStopDistance = thisEnemy.attackStopDistance;
         ai.personalSpace = thisEnemy.personalSpace;
+        ai.heldWeapon = thisEnemy.equippedWeapon;
     }
 
     private void Die()

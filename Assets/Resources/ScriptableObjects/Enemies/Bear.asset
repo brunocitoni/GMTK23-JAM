@@ -22,10 +22,11 @@ MonoBehaviour:
   dropRate:
   - 0.5
   - 0.2
+  equippedWeapon: {fileID: 11400000, guid: 5de8c552b88e74b39ac6907a5b489cd0, type: 2}
   weaponRangeTolerance: 0.6
   moveSpeed: 3
   alliesEvasionRadius: 3
   attackduration: 0.2
-  attackCooldown: 1
+  attackCooldown: 1.1
   attackStopDistance: 0.3
   personalSpace: 1
