@@ -39,21 +39,45 @@ public class Enemy : MonoBehaviour
         ai.heldWeapon = thisEnemy.equippedWeapon;
     }
 
+    private void DecideDrop()
+    {
+        float[] cumulativeChances = new float[thisEnemy.drops.Count];
+        cumulativeChances[0] = thisEnemy.dropRate[0];
+        for (int i = 1; i < thisEnemy.drops.Count; i++)
+        {
+            cumulativeChances[i] = cumulativeChances[i - 1] + thisEnemy.dropRate[i];
+        }
+
+        float totalChance = cumulativeChances[thisEnemy.drops.Count - 1];
+        float randomProb = Random.Range(0f, totalChance);
+
+        for (int i = 0; i < thisEnemy.drops.Count; i++)
+        {
+            if (randomProb <= cumulativeChances[i])
+            {
+                itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
+                break;
+            }
+        }
+    }
+
     private void Die()
     {
         //Debug.Log("Enemy named " + thisEnemy.enemyName + " just died");
         Debug.Log("Dead");
         // drop item
-        for(int i=0; i<thisEnemy.drops.Count; i++)
+        /*for(int i=0; i<thisEnemy.drops.Count; i++)
         {
-            float chance =thisEnemy.dropRate[i];
+            float chance = thisEnemy.dropRate[i];
             float prob = Random.Range(0f, 1f);
             if (prob>chance)
             {
                 itemSpawner.InstantiateItem(thisEnemy.drops[i], this.transform);
                 break;
             }
-        }
+        }*/
+
+        DecideDrop();
 
         //Debug.Log("Destroyinh enemy " + thisEnemy.enemyName);
         // delete this gameobject
